@@ -1,0 +1,35 @@
+/target
+/bin
+/logs
+
+# IDEA-specific
+*.iml
+/.idea
+
+# Eclipse-specific
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+.project
+.externalToolBuilders/
+*.launch
+.classpath
+.factorypath
+.buildpath
+.springBeans
+
+# Netbeans-specific
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
