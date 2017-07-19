@@ -17,10 +17,12 @@
         <dependency>
             <groupId>hu.schonherz.java.summer.project</groupId>
             <artifactId>backoffice-service-api</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>hu.schonherz.java.summer.project</groupId>
             <artifactId>backoffice-data</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
