@@ -1,15 +1,10 @@
 package hu.schonherz.java.summer.project.data.entities;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
@@ -20,7 +15,6 @@ import java.io.Serializable;
 public class CustomerEntity extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
 
     @Column(nullable = false, unique = true)
     private String username;
