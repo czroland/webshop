@@ -1,15 +1,20 @@
 package hu.schonherz.java.summer.project.data.entities;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "products")
-public class ProductEntity extends BaseEntity {
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class ProductEntity extends BaseEntity implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Column(nullable = false)
     private String name;

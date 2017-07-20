@@ -6,13 +6,18 @@ import lombok.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "users")
-public class UserEntity extends BaseEntity {
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class UserEntity extends BaseEntity implements Serializable {
 
+    private static final long serialVersionUID = 1L;
 
     @Column(nullable = false)
     private String username;

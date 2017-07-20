@@ -1,8 +1,6 @@
 package hu.schonherz.java.summer.project.data.entities;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,6 +10,9 @@ import java.io.Serializable;
 @ToString(callSuper = true)
 @Entity
 @Table(name = "customers")
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class CustomerEntity extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
