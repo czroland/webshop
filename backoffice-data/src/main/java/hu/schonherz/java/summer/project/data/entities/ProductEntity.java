@@ -3,7 +3,6 @@ package hu.schonherz.java.summer.project.data.entities;
 import lombok.*;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -12,9 +11,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ProductEntity extends BaseEntity implements Serializable {
+public class ProductEntity extends BaseEntity {
 
-    private static final long serialVersionUID = 1L;
 
     @Column(nullable = false)
     private String name;
