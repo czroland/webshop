@@ -10,7 +10,7 @@
     <developers>
         <developer>
             <id>sutos88</id>
-            <name>Sütõ Sándor</name>
+            <name>Sï¿½tï¿½ Sï¿½ndor</name>
             <roles>
                 <role>Java EE developer</role>
             </roles>
@@ -18,7 +18,7 @@
 
         <developer>
             <id>czroland</id>
-            <name>Czégényi Roland</name>
+            <name>Czï¿½gï¿½nyi Roland</name>
             <roles>
                 <role>Java EE developer</role>
             </roles>
@@ -26,7 +26,7 @@
 
         <developer>
             <id>DavidKiraly</id>
-            <name>Király Dávid</name>
+            <name>Kirï¿½ly Dï¿½vid</name>
             <roles>
                 <role>Java EE developer</role>
             </roles>
@@ -60,6 +60,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <frontend.maven.version>1.5</frontend.maven.version>
         <javaee.version>7.0</javaee.version>
         <spring.version>4.3.9.RELEASE</spring.version>
         <spring.security.version>4.1.3.RELEASE</spring.security.version>
@@ -311,6 +312,11 @@
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>com.github.eirslett</groupId>
+                    <artifactId>frontend-maven-plugin</artifactId>
+                    <version>${frontend.maven.version}</version>
+                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
