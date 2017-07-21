@@ -1,15 +1,17 @@
 package hu.schonherz.java.summer.project.vo;
 
-import lombok.Data;
+import lombok.*;
 
 import java.io.Serializable;
 
 @Data
-public class ProductImageVo implements Serializable {
+@EqualsAndHashCode(callSuper = false)
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class ProductImageVo extends BaseVo {
 
-    private static final long serialVersionUID = 2109271240752611109L;
 
-    private Long id;
 
     private String name;
 
