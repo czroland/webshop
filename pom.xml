@@ -306,6 +306,18 @@
                 <artifactId>postgresql</artifactId>
                 <version>9.4.1208</version>
             </dependency>
+
+            <!--Dozer-->
+            <dependency>
+                <groupId>net.sf.dozer</groupId>
+                <artifactId>dozer</artifactId>
+                <version>5.5.1</version>
+            </dependency>
+            <dependency>
+                <groupId>io.craftsman</groupId>
+                <artifactId>dozer-jdk8-support</artifactId>
+                <version>1.0.2</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

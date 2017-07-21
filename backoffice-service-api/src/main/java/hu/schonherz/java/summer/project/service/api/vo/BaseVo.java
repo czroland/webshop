@@ -1,4 +1,4 @@
-package hu.schonherz.java.summer.project.vo;
+package hu.schonherz.java.summer.project.service.api.vo;
 
 
 import lombok.Data;
