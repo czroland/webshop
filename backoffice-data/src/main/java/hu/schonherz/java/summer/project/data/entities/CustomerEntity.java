@@ -12,31 +12,12 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CustomerEntity extends BaseEntity{
-
-    @Column(nullable = false, unique = true)
-    private String username;
-
-    @Column(nullable = false, unique = true)
-    private String email;
-
-    @Column(nullable = false, columnDefinition = "VARCHAR(40)")
-    private String fullName;
+public class CustomerEntity extends UserEntity{
 
     @Column(nullable = false)
-    private String password;
-
-    @Column(nullable = false, columnDefinition = "VARCHAR(20)")
-    private String phoneNumber;
+    private AddressEntity billingAddress;
 
     @Column(nullable = false)
-    private String billingAddress;
-
-    @Column(nullable = false)
-    private String deliveryAddress;
-
-    public CustomerEntity(String username) {
-        this.username = username;
-    }
+    private AddressEntity deliveryAddress
 
 }
