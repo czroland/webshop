@@ -11,5 +11,7 @@
 
     <context:component-scan base-package="hu.schonherz.java.summer.project" />
 
+    <jee:local-slsb id="userService" jndi-name="ejb.UserServiceLocal"
+                    business-interface="hu.schonherz.java.summer.project.service.api.service.user.UserServiceLocal" />
 
 </beans>
