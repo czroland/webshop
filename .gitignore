@@ -35,4 +35,4 @@ nbdist/
 .nb-gradle/
 
 # Node-specific
-frontend/node_modules
+frontend/node_modules/
