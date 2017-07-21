@@ -15,9 +15,9 @@ public interface CustomerDao extends JpaRepository<CustomerEntity, Long> {
 
     CustomerEntity findByEmail(String email);
 
-    List<CustomerEntity> findByCompanyName(String companyName);
+    //List<CustomerEntity> findByCompanyName(String companyName);
 
     CustomerEntity findById(Long id);
 
-     List<CustomerEntity> findAll();
+    List<CustomerEntity> findAll();
 }

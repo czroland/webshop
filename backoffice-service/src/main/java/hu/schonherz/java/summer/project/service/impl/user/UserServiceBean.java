@@ -1,31 +1,21 @@
-package hu.schonherz.java.summer.project.service.user;
+package hu.schonherz.java.summer.project.service.impl.user;
 
 import hu.schonherz.java.summer.project.data.entities.UserEntity;
 import hu.schonherz.java.summer.project.data.dao.UserDao;
 import hu.schonherz.java.summer.project.service.api.service.user.UserServiceLocal;
 import hu.schonherz.java.summer.project.service.api.vo.UserVo;
 import hu.schonherz.java.summer.project.service.mapper.UserEntityVoMapper;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import javax.ejb.EJB;
-import javax.ejb.Local;
-import javax.ejb.Stateless;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
-import javax.ejb.TransactionManagement;
-import javax.ejb.TransactionManagementType;
-import javax.interceptor.Interceptors;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ejb.interceptor.SpringBeanAutowiringInterceptor;
 
-@Stateless(mappedName = "UserService")
-@Local(UserServiceLocal.class)
-@Interceptors(SpringBeanAutowiringInterceptor.class)
-@TransactionManagement(TransactionManagementType.CONTAINER)
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 @Slf4j
 public class UserServiceBean implements UserServiceLocal {
 
@@ -46,11 +36,10 @@ public class UserServiceBean implements UserServiceLocal {
 
     @Override
     public Set<UserVo> findByCompanyName(final String companyName) {
-        return UserEntityVoMapper.toVo(userDao.findByCompanyName(companyName));
+        return null; //UserEntityVoMapper.toVo(userDao.findByCompanyName(companyName));
     }
 
     @Override
-    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public UserVo registrationUser(final UserVo userVo) {
         UserEntity user = UserEntityVoMapper.toEntity(userVo);
         user = userDao.save(user);
