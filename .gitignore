@@ -33,3 +33,6 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+# Node-specific
+frontend/node_modules
