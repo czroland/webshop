@@ -18,6 +18,6 @@ public class CustomerEntity extends UserEntity{
     private AddressEntity billingAddress;
 
     @Column(nullable = false)
-    private AddressEntity deliveryAddress
+    private AddressEntity deliveryAddress;
 
 }
