@@ -11,7 +11,6 @@ import javax.persistence.*;
 @Table(name = "customers")
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class CustomerEntity extends UserEntity{
 
     @Column(nullable = false)
