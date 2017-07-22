@@ -34,10 +34,6 @@ public class UserServiceBean implements UserServiceLocal {
         return UserEntityVoMapper.toVo(userDao.findByEmail(email));
     }
 
-    @Override
-    public Set<UserVo> findByCompanyName(final String companyName) {
-        return null; //UserEntityVoMapper.toVo(userDao.findByCompanyName(companyName));
-    }
 
     @Override
     public UserVo registrationUser(final UserVo userVo) {
