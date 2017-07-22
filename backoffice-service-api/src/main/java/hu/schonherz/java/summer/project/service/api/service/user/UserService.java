@@ -14,8 +14,6 @@ public interface UserService {
 
     UserVo findByEmail(String email);
 
-    Set<UserVo> findByCompanyName(String companyName);
-
     List<UserVo> findAll();
 
 }
