@@ -16,7 +16,6 @@ import javax.persistence.Table;
 @Builder
 public class UserEntity extends BaseEntity {
 
-
     @Column(nullable = false)
     private String username;
 
@@ -31,7 +30,5 @@ public class UserEntity extends BaseEntity {
 
     @Column(nullable = false)
     private String password;
-
-
 
 }

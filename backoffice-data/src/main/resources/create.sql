@@ -1,0 +1,1 @@
+INSERT INTO public.users(dtype,id, username, fullName, email, phone, password, billingAddress, deliveryAddress) VALUES ('UserEntity',-1, 'proba','J. DOE','jdoe@g.asd', '0000','1234','bb','bb');
