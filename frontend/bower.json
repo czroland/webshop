@@ -1,0 +1,21 @@
+{
+  "name": "frontend",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Gaben9109 <hungaro.gabor@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/schonherz-summer-2017/webshop",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.5"
+  }
+}

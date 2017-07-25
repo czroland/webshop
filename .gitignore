@@ -36,3 +36,5 @@ nbdist/
 
 # Node-specific
 frontend/node_modules/
+
+bower_components
