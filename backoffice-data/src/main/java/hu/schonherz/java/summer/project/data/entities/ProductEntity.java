@@ -13,7 +13,6 @@ import javax.persistence.*;
 @Builder
 public class ProductEntity extends BaseEntity {
 
-
     @Column(nullable = false)
     private String name;
 
@@ -26,5 +25,4 @@ public class ProductEntity extends BaseEntity {
     @OneToOne
     @JoinColumn(name = "image_id")
     private ProductImageEntity image;
-
 }

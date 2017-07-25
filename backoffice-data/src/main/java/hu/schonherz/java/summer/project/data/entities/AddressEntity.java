@@ -2,7 +2,6 @@ package hu.schonherz.java.summer.project.data.entities;
 
 import lombok.*;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -10,12 +9,11 @@ import javax.persistence.Table;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 @Entity
-@Table(name = "adresses")
+@Table(name = "addresses")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class AddressEntity extends BaseEntity{
-
+public class AddressEntity extends BaseEntity {
 
     private String zipCode;
 
@@ -24,5 +22,4 @@ public class AddressEntity extends BaseEntity{
     private String street;
 
     private String number;
-
 }

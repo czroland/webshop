@@ -11,10 +11,6 @@ import java.util.List;
 @Repository
 public interface CustomerDao extends JpaRepository<CustomerEntity, Long> {
 
-    CustomerEntity findByUsername(String username);
-
-    CustomerEntity findByEmail(String email);
-
     CustomerEntity findById(Long id);
 
     List<CustomerEntity> findAll();

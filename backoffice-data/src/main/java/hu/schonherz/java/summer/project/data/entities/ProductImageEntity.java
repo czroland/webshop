@@ -13,7 +13,6 @@ import javax.persistence.*;
 @Builder
 public class ProductImageEntity extends BaseEntity {
 
-
     @Column(nullable = false)
     private String name;
 
@@ -23,5 +22,4 @@ public class ProductImageEntity extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "product_id")
     private ProductEntity product;
-
 }

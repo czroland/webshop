@@ -2,16 +2,10 @@ package hu.schonherz.java.summer.project.service.api.vo;
 
 import lombok.*;
 
-import java.io.Serializable;
-
 @Data
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class ProductImageVo extends BaseVo {
-
-
 
     private String name;
 

@@ -11,12 +11,17 @@ import javax.persistence.*;
 @Table(name = "customers")
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomerEntity extends UserEntity{
+public class CustomerEntity extends BaseEntity {
 
-    @Column(nullable = false)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "billing_address_id")
     private AddressEntity billingAddress;
 
-    @Column(nullable = false)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "delivery_address_id")
     private AddressEntity deliveryAddress;
-
 }
