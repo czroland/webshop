@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="WEB-INF/templates/template.xhtml">
+    <ui:define name="title">
+        #{msg['login.title']}
+    </ui:define>
+
+    <ui:define name="body">
+
+        <div class="text-center">
+            <p:panel rendered="#{facesContext.externalContext.userPrincipal == null}">
+                <h:form id="login-form" prependId="false">
+                    <p:messages showSummary="true" showDetail="false"/>
+
+                    <p:panelGrid columns="2" layout="grid">
+                        <p:outputLabel for="username" value="username"/>
+                        <p:inputText id="username" value="#{MBLogin.username}" required="true"/>
+
+                        <p:outputLabel for="password" value="password"/>
+                        <p:password id="password" value="#{MBLogin.password}" required="true"/>
+
+                    </p:panelGrid>
+                    <h:commandButton type="submit" id="login-button" value="login" action="#{MBLogin.login()}"/>
+                    <ui:param name="logged-in" value=""/>
+
+                </h:form>
+            </p:panel>
+
+            <p:outputLabel rendered="#{facesContext.externalContext.userPrincipal != null}"
+                           styleClass="center-block">
+                <h2 style="text-align: center">Logged in alredy</h2>
+            </p:outputLabel>
+
+        </div>
+
+    </ui:define>
+</ui:composition>
+</html>

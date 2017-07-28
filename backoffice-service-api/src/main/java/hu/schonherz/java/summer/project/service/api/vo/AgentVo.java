@@ -4,14 +4,18 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-@NoArgsConstructor
 public class AgentVo extends BaseVo {
 
     UserVo user;
 
     private List<RoleVo> roles;
+
+    public AgentVo() {
+        roles = new ArrayList<>();
+    }
 }
