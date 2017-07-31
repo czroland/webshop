@@ -29,6 +29,12 @@
                         <p:growl id="messages" autoUpdate="true" showDetail="true"/>
                         <p:menubar>
                             <p:menuitem value="Admin" icon="fa fa-th"/>
+                            <p:menuitem rendered="#{facesContext.externalContext.userPrincipal == null}"
+                                        value="Login" url="/login.xhtml"
+                                        icon="fa fa-spinner fa-pulse"/>
+                            <p:menuitem rendered="#{facesContext.externalContext.userPrincipal != null}"
+                                        value="Logout" url="/logout"
+                                        icon="fa fa-spinner fa-pulse"/>
                         </p:menubar>
                     </h:form>
                 </div>
@@ -40,6 +46,9 @@
                 <p:breadCrumb>
                     <ui:insert name="breadCrumb">
                         <p:menuitem value="Categories" url="/index.xhtml"/>
+                        <p:menuitem rendered="#{facesContext.externalContext.userPrincipal ne null}"
+                                    value="#{facesContext.externalContext.userPrincipal.name}"
+                                    url="/profile.xhtml"/>
                     </ui:insert>
                 </p:breadCrumb>
             </h:form>

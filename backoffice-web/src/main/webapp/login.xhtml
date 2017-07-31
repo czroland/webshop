@@ -16,16 +16,16 @@
                     <p:messages showSummary="true" showDetail="false"/>
 
                     <p:panelGrid columns="2" layout="grid">
-                        <p:outputLabel for="username" value="username"/>
+                        <p:outputLabel for="username" value="Username"/>
                         <p:inputText id="username" value="#{MBLogin.username}" required="true"/>
 
-                        <p:outputLabel for="password" value="password"/>
+                        <p:outputLabel for="password" value="Password"/>
                         <p:password id="password" value="#{MBLogin.password}" required="true"/>
 
                     </p:panelGrid>
-                    <h:commandButton type="submit" id="login-button" value="login" action="#{MBLogin.login()}"/>
+                    <h:commandButton type="submit" id="login-button" value="Login" action="#{MBLogin.login()}"/>
                     <ui:param name="logged-in" value=""/>
-
+                    <p:messages autoUpdate="true"/>
                 </h:form>
             </p:panel>
 

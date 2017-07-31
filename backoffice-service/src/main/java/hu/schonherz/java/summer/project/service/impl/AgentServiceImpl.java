@@ -33,8 +33,7 @@ public class AgentServiceImpl extends AbstractEntityVoMapper implements AgentSer
 
     @Override
     public AgentVo getAgentById(Long id) {
-        AgentEntity agent = null;
-        agent = agentRepository.findById(id);
+        AgentEntity agent = agentRepository.findById(id);
         if (agent != null) {
             return map(agent, AgentVo.class);
         }
@@ -43,20 +42,20 @@ public class AgentServiceImpl extends AbstractEntityVoMapper implements AgentSer
 
     @Override
     public AgentVo getAgentByName(String name) {
-        UserEntity user = null;
-        user = userRepository.findByUsername(name);
-        AgentEntity agent = null;
-        agent = agentRepository.findByUserId(user.getId());
-        if (agent != null) {
-            return map(agent, AgentVo.class);
+        UserEntity user = userRepository.findByUsername(name);
+        if (user != null) {
+            AgentEntity agent = agentRepository.findByUserId(user.getId());
+            if (agent != null) {
+                return map(agent, AgentVo.class);
+            }
         }
+
         return null;
     }
 
     @Override
     public AgentVo getAgentByUserId(Long id) {
-        AgentEntity agent = null;
-        agent = agentRepository.findByUserId(id);
+        AgentEntity agent = agentRepository.findByUserId(id);
         if (agent != null) {
             return map(agent, AgentVo.class);
         }
