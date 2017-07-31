@@ -1,7 +1,7 @@
 (function () {
     angular
-        .module('webshop')
-        .controller('main', Controller);
+        .module('webshopModule')
+        .controller('mainController', Controller);
 
     function Controller($scope, api) {
         $scope.getProducts = function () {

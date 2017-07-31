@@ -1,4 +1,4 @@
 (function () {
     angular
-        .module('webshop', []);
+        .module('webshopModule', ['ngRoute']);
 })();

@@ -38,3 +38,4 @@ nbdist/
 frontend/node_modules/
 package-lock.json
 bower_components
+*.css

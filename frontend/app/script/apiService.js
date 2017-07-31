@@ -1,6 +1,6 @@
 (function () {
     angular
-        .module('webshop')
+        .module('webshopModule')
         .service('api', Service);
 
     function Service($http) {
