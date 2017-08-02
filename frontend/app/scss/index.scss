@@ -1,5 +1,11 @@
+html{
+    height: 100%;
+}
+
 body {
-    padding-top: 70px;
+    min-height: 100%;
+    padding: 7rem 0 8rem;
+    position: relative;
 }
 
 .slide-image {
@@ -65,8 +71,12 @@ body {
 
 footer {
     background-color: #101010;
+    bottom: 0;
     color: #9f9f9f;
-    padding: 50px 10px;
+    left: 0;
+    padding: 3rem 1rem;
+    position: absolute;
+    width: 100%;
 
     p {
         margin: 0;
