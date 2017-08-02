@@ -309,6 +309,11 @@
                 <artifactId>dozer-jdk8-support</artifactId>
                 <version>1.0.2</version>
             </dependency>
+            <dependency>
+                <groupId>javax.enterprise</groupId>
+                <artifactId>cdi-api</artifactId>
+                <version>1.2</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
