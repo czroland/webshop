@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="../WEB-INF/templates/template.xhtml">
+    <ui:define name="title">
+        Registration
+    </ui:define>
+
+    <ui:define name="body">
+        <div class="text-center">
+
+            <h:form id="registration-form">
+                <p:messages showSummary="true" showDetail="false"/>
+                <p:panelGrid columns="2" layout="grid">
+                    <p:outputLabel for="uname" value="Username"/>
+                    <p:inputText id="uname" value="#{MBAgent.agent.user.username}" required="true">
+                        <f:validator binding="#{usernameValidator}"/>
+                    </p:inputText>
+
+                    <p:outputLabel for="fname" value="Fullname"/>
+                    <p:inputText id="fname" value="#{MBAgent.agent.user.fullName}" required="true"/>
+
+                    <p:outputLabel for="email" value="E-mail"/>
+                    <p:inputText id="email" value="#{MBAgent.agent.user.email}" required="true"/>
+
+                    <p:outputLabel for="phone" value="Phone"/>
+                    <p:inputText id="phone" value="#{MBAgent.agent.user.phone}" required="true"/>
+
+                    <p:outputLabel for="pass1" value="Password"/>
+                    <p:password id="pass1" value="#{MBAgent.agent.user.password}" required="true"
+                                match="pass2" feedback="true" inline="true" validatorMessage="Passwords don't match!">
+                    </p:password>
+
+                    <p:outputLabel for="pass2" value="Password again"/>
+                    <p:password id="pass2" value="#{MBAgent.agent.user.password}" required="true"/>
+
+                </p:panelGrid>
+                <p:commandButton type="submit" id="login-button" value="Registration"
+                                 action="#{MBRegistration.doCreate}"/>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>
