@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="../WEB-INF/templates/template.xhtml">
+    <ui:define name="title">
+        Admin panel
+    </ui:define>
+
+    <ui:define name="body">
+        <h:form>
+            <h:panelGroup id="panel">
+                <p:selectOneRadio id="roles" value="#{MBRole.agentRole}" layout="responsive" columns="5">
+                    <f:selectItems value="#{MBRole.roles}" var="agentRole"
+                                   itemLabel="#{agentRole.name}" itemValue="#{agentRole.name}"/>
+                </p:selectOneRadio>
+
+                <p:dataTable id="agents" var="agent" value="#{MBAgent.agents.source}"
+                             selection="#{MBAgent.agents.target}" rowKey="#{agent.id}"
+                             style="margin-bottom:0"
+                             rows="20"
+                             paginator="true"
+                             paginatorPosition="bottom"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="15, 20, 50">
+
+                    <p:column selectionMode="multiple" style="width:36px;text-align:center"/>
+
+                    <p:column headerText="Username" sortBy="#{agent.user.name}">
+                        <h:outputText value="#{agent.user.username}"/>
+                    </p:column>
+
+                    <p:column headerText="E-mail" sortBy="#{agent.user.email}">
+                        <h:outputText value="#{agent.user.email}"/>
+                    </p:column>
+
+                    <p:column headerText="Roles">
+                        <h:dataTable id="asd" var="role" value="#{agent.roles}">
+                            <p:column>
+                                <h:outputText id="as" value="#{role.name}"/>
+                            </p:column>
+                        </h:dataTable>
+                    </p:column>
+
+                </p:dataTable>
+
+                <p:commandButton id="add-role" value="Add role"
+                                 style="margin-top:5px"
+                                 update="panel"
+                                 action="#{MBRoleManagement.addRole(MBAgent.agents.target, MBRole.agentRole)}"
+                />
+                <p:commandButton id="remove-role" value="Remove role"
+                                 style="margin-top:5px"
+                                 update="panel"
+                                 action="#{MBRoleManagement.removeRole(MBAgent.agents.target, MBRole.agentRole)}"
+                />
+            </h:panelGroup>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+</html>

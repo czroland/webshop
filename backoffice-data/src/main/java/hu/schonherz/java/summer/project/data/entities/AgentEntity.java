@@ -16,6 +16,6 @@ public class AgentEntity extends BaseEntity {
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private List<RoleEntity> roles;
 }
