@@ -7,6 +7,10 @@
                     templateUrl: 'templates/main.html',
                     controller: 'mainController'
                 })
+                .when('/login', {
+                    templateUrl: 'templates/loginPage.html',
+                    controller: 'loginController'
+                })
                 .when('/profile', {
                     templateUrl: 'templates/userProfile.html'
                 });
