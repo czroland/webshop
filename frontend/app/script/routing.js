@@ -16,6 +16,10 @@
                 })
                 .when('/profile', {
                     templateUrl: 'templates/userProfile.html'
+                })
+                .when('/offer/:id', {
+                    templateUrl: "templates/offerDetails.html",
+                    controller: "offerDetailsController"
                 });
         });
 })();

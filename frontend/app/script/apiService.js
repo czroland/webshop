@@ -4,11 +4,21 @@
         .service('api', Service);
 
     function Service($http) {
-        var urlBase = 'http://localhost:8080/product';
+        var urlBase = 'http://localhost:8080';
         this.getProducts = getProducts;
+        this.getOfferDetail = getOfferDetail;
+        this.getOffers = getOffers;
 
         function getProducts() {
-            return $http.get(urlBase);
+            return $http.get(urlBase + "/product");
+        }
+
+        function getOfferDetail(id) {
+            return $http.get(urlBase + "/offer/" + id);
+        }
+
+        function getOffers() {
+            return $http.get(urlBase + "/offer");
         }
     }
 })();

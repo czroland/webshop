@@ -1,0 +1,35 @@
+<div class="container offer-detail">
+    <div class="col-md-12 offer-name">
+        <h2>{{offer.name | uppercase}}</h2>
+    </div>
+    <h3 class="col-md-12">Products:</h3>
+    <div class="col-md-12 offer-products" ng-repeat="product in offer.products">
+        <div class="row offer-product">
+            <h4 class="col-md-12">{{product.name}} ({{product.quantity}}x)</h4>
+            <div class="col-md-4 col-sm-4 col-xs-12 product-image">
+                <img class="col-md-12 col-sm-12 col-xs-12" ng-src="{{product.src}}" alt="product.name" />
+            </div>
+            <div class="row col-md-8 col-sm-8 col-xs-12">
+                <div class="row" ng-repeat="(key, value) in product.description">
+                    <div class="col-md-2 col-sm-3 col-xs-4">
+                        <h5>{{key | uppercase}}</h5>
+                    </div>
+                    <div class="col-md-10 col-sm-9 col-xs-8">
+                        <p>{{value}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 offer-price">
+        <h2>Price: {{offer.price | currency}}</h2>
+        <button class="btn btn-lg btn-default">
+            <i class="glyphicon glyphicon-shopping-cart"></i>
+        </button>
+    </div>
+</div>
+
+<div class="image-modal">
+    <span class="image-modal-close">x</span>
+    <img class="image-modal-content" />
+</div>

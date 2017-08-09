@@ -21,53 +21,129 @@ body {
     border-radius: 4px;
 }
 
-.products {
-    display: flex;
-    flex-wrap: wrap;
-
-    .product {
-        display: inline-block;
-        width: 33.33%;
-        height: 400px;
-        position: relative;
-
-        img {
-            max-width: 200px;
-            min-width: 100px;
-            height: auto;
-        }
-
-        button {
-            bottom: 15px;
-            display: block;
-            margin: auto;
-            position: absolute;
-            right: 15px;
-        }
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .products {
-        .product {
-            width: 50%;
-        }
-
-        img {
-            max-width: 250px;
-        }
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .products {
-        .product {
-            height: 450px;
-            width: 100%;
-
-            img {
-                max-width: 350px;
+.offers {
+    padding: 0;
+    .offer {
+        padding: 0 1rem;
+        .offer-body {
+            padding: 0 1rem 5.5rem;
+            position: relative;
+            .caption {
+                height: 10rem;
             }
+            .products {
+                height: 15rem;
+                overflow-y: hidden;
+                padding: 0 1rem;
+                position: relative;
+                .smoothy-box {
+                    background: linear-gradient(transparent, white);
+                    bottom: 0;
+                    height: 1rem;
+                    left: 0;
+                    position: absolute;
+                    width: 100%;
+                }
+            }
+            .details {
+                padding: 1rem 1rem 0;
+                a:hover {
+                    cursor: pointer;
+                }
+            }
+            button {
+                bottom: 1rem;
+                position: absolute;
+                right: 1rem;
+            }
+        }
+    }
+}
+
+.offer-detail {
+    .offer-name {
+        border-bottom: 1px solid #9f9f9f;
+    }
+    .offer-products {
+        padding-bottom: 2rem;
+        text-align: justify;
+        .offer-product {
+            border-bottom: 1px solid #9f9f9f;
+            padding: 1rem;
+            .product-image {
+                padding: 1.5rem;
+                img:hover {
+                    cursor: pointer;
+                    opacity: 0.6;
+                }
+            }
+            h4, h5 {
+                font-weight: bold;
+            }
+            p {
+                line-height: 150%;
+                padding: .75rem 0;
+            }
+        }
+    }
+    .offer-price {
+        padding-bottom: 4rem;
+        position: relative;
+        button {
+            bottom: 4rem;
+            position: absolute;
+            right: 1rem;
+        }
+    }
+}
+
+.image-modal {
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.75);
+    display: none;
+    height: 100%;
+    left: 0;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+    .image-modal-close {
+        color: #f1f1f1;
+        font-size: 4rem;
+        position: absolute;
+        right: 4rem;
+        top: 6rem;
+        transition: .25s;
+        &:hover, &:active {
+            color: red;
+            cursor: pointer;
+        }
+    }
+    .image-modal-content {
+        -webkit-animation-name: zoom;
+        -webkit-animation-duration: .5s;
+        animation-name: zoom;
+        animation-duration: .5s;
+        display: block;
+        margin: 15rem auto;
+        width: 70%;
+    }
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+@keyframes zoom {
+    from {transform: scale(0.1)}
+    to {transform: scale(1)}
+}
+
+@media only screen and (max-width: 768px) {
+    .image-modal {
+        .image-modal-content {
+            width: 100%;
         }
     }
 }

@@ -4,14 +4,13 @@
         .controller('mainController', Controller);
 
     function Controller($scope, api) {
-        $scope.getProducts = function () {
-            api.getProducts()
+        $scope.getOffers = function () {
+            api.getOffers()
                 .then(function (response) {
-                    $scope.products = response.data.products;
-                    console.log($scope.products);
+                    $scope.offers = response.data.offers;
                 });
         };
 
-        $scope.getProducts();
+        $scope.getOffers();
     }
 })();

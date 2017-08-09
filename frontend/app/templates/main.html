@@ -39,18 +39,34 @@
                 </div>
             </div>
 
-            <div class="products">
-                <div class="thumbnail product" ng-repeat="product in products">
-                    <img ng-src="{{product.src}}" alt="{{product.name}}">
-                    <div class="caption">
-                        <h4><a href="#">{{product.name}}</a></h4>
-                        <h4>{{product.price | currency}}</h4>
+            <div class="offers col-md-12">
+                <div class="offer col-md-4 col-sm-6 col-xs-12" ng-repeat="offer in offers">
+                    <div class="offer-body thumbnail">
+                        <div class="caption">
+                            <h4><a href="#/offer/{{offer.id}}">{{offer.name | uppercase}}</a></h4>
+                            <h4>{{offer.price | currency}}</h4>
+                        </div>
+                        <div class="products">
+                            <h4>Products:</h4>
+                            <ul>
+                                <li ng-repeat="product in offer.products">
+                                    <h5>{{product.quantity}}x {{product.name}}</h5>
+                                </li>
+                            </ul>
+                            <div class="smoothy-box"></div>
+                        </div>
+                        <div class="details">
+                            <a href="#/offer/{{offer.id}}">
+                                <h5>Details...</h5>
+                            </a>
+                        </div>
+                        <button type="button" class="btn btn-default">
+                            <i class="glyphicon glyphicon-shopping-cart"></i>
+                        </button>
                     </div>
-                    <button type="button" class="btn btn-default">
-                        <i class="glyphicon glyphicon-shopping-cart"></i>
-                    </button>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
