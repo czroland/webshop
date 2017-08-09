@@ -87,12 +87,12 @@ footer {
     }
 }
 
-#editHeading, #purchaseHistory {
+#editHeading, #purchaseHistory, #signupHeading {
     font-size: 30px;
     margin: 15px;
 }
 
-#editForm {
+#editForm, #regForm {
     margin: 20px;
 
     input.ng-invalid {
@@ -105,11 +105,21 @@ footer {
         text-align: center;
         margin-top: 5px;
     }
+    #submitButton {
 
-    button {
-        width: 40%;
-        padding: 10px;
-        margin: 0 15%;
+        text-align: center;
+
+        button {
+            width: 40%;
+            padding: 10px;
+            margin: 0 15%;
+        }
+    }
+}
+
+.col-md-offset-6 {
+    > div, label {
+        margin-left: 15px;
     }
 }
 

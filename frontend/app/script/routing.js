@@ -7,6 +7,9 @@
                     templateUrl: 'templates/main.html',
                     controller: 'mainController'
                 })
+                .when('/signup', {
+                    templateUrl: 'templates/signupPage.html'
+                })
                 .when('/login', {
                     templateUrl: 'templates/loginPage.html',
                     controller: 'loginController'

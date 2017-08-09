@@ -1,0 +1,95 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-6">
+            <div id="signupHeading">Sign Up</div>
+            <div>Please fill in the form in order to make a new account.</div>
+            <div>Already have an account? Click <a href="#/login">here</a> to login.</div>
+            <form name="regForm" id="regForm" novalidate>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <input placeholder="Enter a valid e-mail address" name="emailInput" class="form-control"
+                               type="email"
+                               ng-model="mail">
+                        <span class="warn" ng-show="regForm.emailInput.$invalid">Entered e-mail is incorrect</span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <input placeholder="Choose password" name="passw" class="form-control" type="password"
+                               ng-minlength="6"
+                               ng-model="passw">
+                        <span class="warn" ng-show="regForm.passw.$invalid">Entered password is incorrect<br>You need to choose at least 6 characters</span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <input placeholder="Confirm Password" name="passwconf" class="form-control" type="password"
+                               ng-minlength="6" ng-model="passwconf" ng-pattern="passw">
+                        <span class="warn" ng-show="regForm.passw.$valid && regForm.passwconf.$error.pattern">Passwords do not match</span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <input placeholder="First Name" name="fname" class="form-control" type="text" ng-model="fname"
+                               pattern="[A-Z][a-z]+">
+                        <span class="warn" ng-show="regForm.fname.$invalid">Entered name is incorrect</span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <input placeholder="Last Name" name="lname" class="form-control" type="text" ng-model="lname"
+                               pattern="[A-Z][a-z]+">
+                        <span class="warn" ng-show="regForm.lname.$invalid">Entered name is incorrect</span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <input placeholder="Phone Number" name="phone" class="form-control" type="tel" ng-model="phone"
+                               pattern="[0-9]+">
+                        <span class="warn" ng-show="regForm.phone.$invalid">Entered phone number is incorrect</span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <input placeholder="Country" name="country" class="form-control" type="text" ng-model="country"
+                               pattern="[A-Z][a-z]+">
+                        <span class="warn" ng-show="regForm.country.$invalid">Entered country is incorrect</span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <input placeholder="City" name="city" class="form-control" type="text" ng-model="city"
+                               pattern="[A-Z][a-z]+">
+                        <span class="warn" ng-show="regForm.city.$invalid">Entered city is incorrect</span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <input placeholder="Address" name="address" class="form-control" type="text" ng-model="address"
+                               pattern="[A-Z][a-z]+[' ']{1}[a-z]+[' ']{1}[0-9]+">
+                        <span class="warn" ng-show="regForm.address.$invalid">Entered address is incorrect</span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <input placeholder="ZIP Code" name="zip" class="form-control" type="text" ng-model="zip"
+                               pattern="[0-9]+">
+                        <span class="warn" ng-show="regForm.zip.$invalid">Entered ZIP Code is incorrect</span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="terms"><input type="checkbox" id="terms">
+                        I agree to the Webshop <a href="/#">User
+                            Agreement</a></label>
+                </div>
+                <div class="form-group row">
+                    <label for="newsletter"><input type="checkbox" id="newsletter">
+                        I want to receive notification about the latest offers</label>
+                </div>
+                <div id="submitButton">
+                    <button type="submit" class="btn btn-primary">Create new account</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

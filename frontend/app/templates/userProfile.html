@@ -3,75 +3,77 @@
         <div id="editHeading">Edit Your Profile</div>
         <form name="editForm" id="editForm" novalidate>
             <div class="form-group row">
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <input placeholder="New E-Mail" name="emailInput" class="form-control" type="email" ng-model="mail">
                     <span class="warn" ng-show="editForm.emailInput.$invalid">Entered e-mail is incorrect</span>
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <input placeholder="New Password" name="passw" class="form-control" type="password" ng-minlength="6"
                            ng-model="passw">
                     <span class="warn" ng-show="editForm.passw.$invalid">Entered password is incorrect<br>You need to choose at least 6 characters</span>
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <input placeholder="Confirm Password" name="passwconf" class="form-control" type="password"
                            ng-minlength="6" ng-model="passwconf" ng-pattern="passw">
                     <span class="warn" ng-show="editForm.passw.$valid && editForm.passwconf.$error.pattern">Passwords do not match</span>
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <input placeholder="First Name" name="fname" class="form-control" type="text" ng-model="fname"
                            pattern="[A-Z][a-z]+">
                     <span class="warn" ng-show="editForm.fname.$invalid">Entered name is incorrect</span>
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <input placeholder="Last Name" name="lname" class="form-control" type="text" ng-model="lname"
                            pattern="[A-Z][a-z]+">
                     <span class="warn" ng-show="editForm.lname.$invalid">Entered name is incorrect</span>
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <input placeholder="Phone Number" name="phone" class="form-control" type="tel" ng-model="phone"
                            pattern="[0-9]+">
                     <span class="warn" ng-show="editForm.phone.$invalid">Entered phone number is incorrect</span>
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <input placeholder="Country" name="country" class="form-control" type="text" ng-model="country"
                            pattern="[A-Z][a-z]+">
                     <span class="warn" ng-show="editForm.country.$invalid">Entered country is incorrect</span>
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <input placeholder="City" name="city" class="form-control" type="text" ng-model="city"
                            pattern="[A-Z][a-z]+">
                     <span class="warn" ng-show="editForm.city.$invalid">Entered city is incorrect</span>
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <input placeholder="Address" name="address" class="form-control" type="text" ng-model="address"
                            pattern="[A-Z][a-z]+[' ']{1}[a-z]+[' ']{1}[0-9]+">
                     <span class="warn" ng-show="editForm.address.$invalid">Entered address is incorrect</span>
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <input placeholder="ZIP Code" name="zip" class="form-control" type="text" ng-model="zip"
                            pattern="[0-9]+">
                     <span class="warn" ng-show="editForm.zip.$invalid">Entered ZIP Code is incorrect</span>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Modify</button>
+            <div id="submitButton">
+                <button type="submit" class="btn btn-primary">Modify</button>
+            </div>
         </form>
     </div>
     <div class="col-md-6">
