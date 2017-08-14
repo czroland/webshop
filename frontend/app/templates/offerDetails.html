@@ -4,10 +4,10 @@
     </div>
     <h3 class="col-md-12">Products:</h3>
     <div class="col-md-12 offer-products" ng-repeat="product in offer.products">
-        <div class="row offer-product">
+        <div class="row offer-product" image-modal>
             <h4 class="col-md-12">{{product.name}} ({{product.quantity}}x)</h4>
             <div class="col-md-4 col-sm-4 col-xs-12 product-image">
-                <img class="col-md-12 col-sm-12 col-xs-12" ng-src="{{product.src}}" alt="product.name" />
+                <img class="col-md-12 col-sm-12 col-xs-12" ng-src="{{product.src}}" alt="product.name"/>
             </div>
             <div class="row col-md-8 col-sm-8 col-xs-12">
                 <div class="row" ng-repeat="(key, value) in product.description">
