@@ -23,7 +23,7 @@
                         <p:password id="password" value="#{MBLogin.password}" required="true"/>
 
                     </p:panelGrid>
-                    <p:commandButton type="submit" id="login-button" value="Login" action="#{MBLogin.login()}"/>
+                    <p:commandButton type="submit" id="login-button" value="Login" action="#{MBLogin.login()}" ajax="false"/>
                     <ui:param name="logged-in" value=""/>
                     <p:messages autoUpdate="true"/>
                 </h:form>
@@ -31,7 +31,7 @@
 
             <p:outputLabel rendered="#{facesContext.externalContext.userPrincipal != null}"
                            styleClass="center-block">
-                <h2 style="text-align: center">Logged in alredy</h2>
+                <h2 style="text-align: center">Logged in already</h2>
             </p:outputLabel>
 
         </div>
