@@ -2,21 +2,38 @@
     <div class="login-header">
         <i class="glyphicon glyphicon-lock"></i>
     </div>
-    <div class="login-body">
+    <form class="login-body form-group"
+          name="loginForm"
+          id="loginForm"
+          ng-submit="login()">
         <label for="username">Username</label>
         <div class="login-input">
-            <input class="form-control" type="text" id="username" placeholder="Username" />
+            <input class="form-control"
+                   type="text"
+                   name="username"
+                   id="username"
+                   ng-model="username"
+                   placeholder="Username"
+                   autofocus
+                   required />
             <i class="glyphicon glyphicon-user"></i>
         </div>
         <label for="password">Password</label>
-        <div class="login-input">
-            <input class="form-control" type="password" id="password" placeholder="Password" />
+        <div class="login-input form-group">
+            <input class="form-control"
+                   type="password"
+                   name="password"
+                   id="password"
+                   ng-model="password"
+                   placeholder="Password"
+                   required />
             <i class="glyphicon glyphicon-lock"></i>
         </div>
-        <label><input type="checkbox" /> Keep me logged in</label>
-        <button class="btn btn-primary">
+        <label><input type="checkbox" ng-model="remember" /> Keep me logged in</label>
+        <button type="submit"
+                class="btn btn-primary">
             <span>Login</span>
             <i class="glyphicon glyphicon-log-in"></i>
         </button>
-    </div>
+    </form>
 </div>
