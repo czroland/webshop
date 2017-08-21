@@ -1,4 +1,4 @@
-package hu.schonherz.java.summer.project.service.rest;
+package hu.schonherz.java.summer.project.integration.rest;
 
 
 import hu.schonherz.java.summer.project.service.api.vo.UserVo;

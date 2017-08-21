@@ -39,6 +39,7 @@
         <module>backoffice-service</module>
         <module>backoffice-service-api</module>
         <module>backoffice-web</module>
+        <module>backoffice-integration</module>
     </modules>
 
     <repositories>

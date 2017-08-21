@@ -11,7 +11,7 @@
 
     <artifactId>backoffice-web</artifactId>
     <packaging>war</packaging>
-    <name>backoffice-web Maven Webapp</name>
+    <name>backoffice-web</name>
     <url>http://maven.apache.org</url>
 
     <dependencies>
