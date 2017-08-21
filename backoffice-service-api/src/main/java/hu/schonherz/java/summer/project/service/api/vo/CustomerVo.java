@@ -14,4 +14,6 @@ public class CustomerVo extends BaseVo {
     private AddressVo billingAddress;
 
     private AddressVo deliveryAddress;
+
+    private String role;
 }
