@@ -25,5 +25,6 @@ public class CustomerEntity extends BaseEntity {
     @JoinColumn(name = "delivery_address_id")
     private AddressEntity deliveryAddress;
 
+    //TODO:refactor, using isAuthenticated() instead of role
     private String role;
 }

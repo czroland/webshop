@@ -4,6 +4,26 @@
        xmlns:security="http://www.springframework.org/schema/security"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
+    <security:http
+        entry-point-ref="unauthorizedEntryPoint"
+        authentication-manager-ref="authenticationManager"
+        create-session="stateless">
+        <security:csrf disabled="true"/>
+        <security:custom-filter ref="authenticationTokenProcessingFilter" position="PRE_AUTH_FILTER"/>
+        <security:intercept-url pattern="/rest/user/authenticate" access="permitAll"/>
+    </security:http>
 
+    <bean id="unauthorizedEntryPoint"
+          class="hu.schonherz.java.summer.project.integration.UnauthorizedEntryPoint"/>
+
+    <bean id="authenticationTokenProcessingFilter"
+          class="hu.schonherz.java.summer.project.integration.AuthenticationTokenProcessingFilter">
+    </bean>
+
+    <security:authentication-manager id="authenticationManager">
+        <security:authentication-provider user-service-ref="customUserDetailsService">
+            <security:password-encoder hash="bcrypt"/>
+        </security:authentication-provider>
+    </security:authentication-manager>
 
 </beans>

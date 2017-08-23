@@ -8,5 +8,5 @@ public interface AccessTokenService {
 
     AccessTokenVo findByToken(String token);
 
-    void createAccessToken(CustomerVo customer);
+    AccessTokenVo createAccessToken(CustomerVo customer);
 }

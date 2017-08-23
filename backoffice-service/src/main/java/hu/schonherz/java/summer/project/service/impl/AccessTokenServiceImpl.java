@@ -24,8 +24,9 @@ public class AccessTokenServiceImpl extends AbstractEntityVoMapper implements Ac
     }
 
     @Override
-    public void createAccessToken(CustomerVo customer) {
+    public AccessTokenVo createAccessToken(CustomerVo customer) {
         AccessTokenVo accessToken = new AccessTokenVo(customer, UUID.randomUUID().toString());
         accessTokenDao.save(map(accessToken, AccessToken.class));
+        return accessToken;
     }
 }
