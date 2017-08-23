@@ -10,6 +10,11 @@
                     $scope.offers = response.data.offers;
                 });
         };
+        $scope.sortByOptions = [
+            {name: "Name", value: "name"},
+            {name: "Price", value: "price"}
+        ];
+        $scope.selectedOption = $scope.sortByOptions[0];
 
         $scope.getOffers();
     }
