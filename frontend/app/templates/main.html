@@ -39,8 +39,38 @@
                 </div>
             </div>
 
+            <div class="search-bar row">
+                <div class="search col-md-6">
+                    <input type="text"
+                           id="search"
+                           name="search"
+                           class="form-control"
+                           placeholder="Search..."
+                           ng-model="search" />
+                    <i class="glyphicon glyphicon-search"></i>
+                </div>
+                <div class="sort col-md-6">
+                    <label for="sort">Sort By: </label>
+                    <select id="sort"
+                            name="sort"
+                            class="form-control"
+                            ng-model="selectedOption"
+                            ng-options="option.name for option in sortByOptions track by option.value">
+                    </select>
+                    <label for="reverse">Reverse: </label>
+                    <label class="switch">
+                        <input id="reverse"
+                               name="reverse"
+                               type="checkbox"
+                               ng-model="reverse">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+
             <div class="offers col-md-12">
-                <div class="offer col-md-4 col-sm-6 col-xs-12" ng-repeat="offer in offers">
+                <div class="offer col-md-4 col-sm-6 col-xs-12"
+                     ng-repeat="offer in offers | filter: {name: search} | orderBy: selectedOption.value : reverse">
                     <div class="offer-body thumbnail">
                         <div class="caption">
                             <h4><a href="#/offer/{{offer.id}}">{{offer.name | uppercase}}</a></h4>

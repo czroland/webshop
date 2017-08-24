@@ -13,5 +13,5 @@ public interface ProductDao extends JpaRepository<ProductEntity, Long> {
 
     ProductEntity findByNumber(String number);
 
-    List<ProductEntity> findByName(String name);
+    ProductEntity findByName(String name);
 }
