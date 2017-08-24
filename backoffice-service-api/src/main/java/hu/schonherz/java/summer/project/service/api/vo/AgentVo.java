@@ -11,7 +11,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 public class AgentVo extends BaseVo {
 
-    UserVo user;
+    private UserVo user;
 
     private List<RoleVo> roles;
 

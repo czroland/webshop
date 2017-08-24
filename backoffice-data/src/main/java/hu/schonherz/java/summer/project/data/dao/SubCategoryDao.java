@@ -6,7 +6,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Repository
 @Transactional(propagation = Propagation.SUPPORTS)
 public interface SubCategoryDao extends JpaRepository<SubCategoryEntity, Long> {
+
+    List<SubCategoryEntity> findByCategoryId(Long id);
 }
