@@ -19,6 +19,11 @@ public class SubCategoryServiceImpl extends AbstractEntityVoMapper implements Su
     private SubCategoryDao subCategoryDao;
 
     @Override
+    public SubCategoryVo getSubCategoryById(Long id) {
+        return map(subCategoryDao.findOne(id), SubCategoryVo.class);
+    }
+
+    @Override
     public List<SubCategoryVo> getAllSubCategoriesByCategoryId(Long id) {
         return map(subCategoryDao.findByCategoryId(id), SubCategoryVo.class);
     }

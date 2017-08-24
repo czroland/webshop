@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="../WEB-INF/templates/template.xhtml">
+    <ui:define name="title">
+        Product
+    </ui:define>
+    <ui:define name="body">
+<h:form>
+    <h:outputLabel for="category" value="Category: * "/>
+    <p:selectOneMenu id="category" required="true"
+                     value="#{categoryBean.category}"
+                     converter="#{categoryVoConverter}">
+        <f:selectItem itemLabel="Select one!" itemValue=""/>
+        <f:selectItems value="#{categoryBean.categories}" var="category"
+                       itemLabel="#{category.name}" itemValue="#{category}"/>
+        <p:ajax listener="#{categoryBean.selectOneMenuListener}" update="sub-category"/>
+    </p:selectOneMenu>
+    <h:outputLabel for="sub-category" value="Subcategory: * "/>
+    <p:selectOneMenu id="sub-category" required="true"
+                     value="#{categoryBean.subCategory}"
+                     converter="#{categoryVoConverter}">
+        <f:selectItem itemLabel="Select one!" itemValue=""/>
+        <f:selectItems value="#{categoryBean.subCategories}" var="subcategory"
+                       itemLabel="#{subcategory.name}" itemValue="#{subcategory}"/>
+    </p:selectOneMenu>
+</h:form>
+    </ui:define>
+</ui:composition>
+</html>
