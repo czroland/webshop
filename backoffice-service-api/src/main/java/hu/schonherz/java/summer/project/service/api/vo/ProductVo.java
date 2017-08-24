@@ -14,4 +14,8 @@ public class ProductVo extends BaseVo {
     private String number;
 
     private ProductImageVo image;
+
+    private CategoryVo category;
+
+    private SubCategoryVo subCategory;
 }

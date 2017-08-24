@@ -25,4 +25,12 @@ public class ProductEntity extends BaseEntity {
     @OneToOne
     @JoinColumn(name = "image_id")
     private ProductImageEntity image;
+
+    @OneToOne
+    @JoinColumn(name = "category_id")
+    private CategoryEntity category;
+
+    @OneToOne
+    @JoinColumn(name = "sub_category_id")
+    private SubCategoryEntity subCategory;
 }
