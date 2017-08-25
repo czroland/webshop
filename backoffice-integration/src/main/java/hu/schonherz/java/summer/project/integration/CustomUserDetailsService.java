@@ -16,8 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.Set;
-@Transactional(propagation = Propagation.REQUIRED)
 
+@Transactional(propagation = Propagation.REQUIRED)
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 

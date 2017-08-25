@@ -9,25 +9,51 @@
         Product
     </ui:define>
     <ui:define name="body">
-<h:form>
-    <h:outputLabel for="category" value="Category: * "/>
-    <p:selectOneMenu id="category" required="true"
-                     value="#{categoryBean.category}"
-                     converter="#{categoryVoConverter}">
-        <f:selectItem itemLabel="Select one!" itemValue=""/>
-        <f:selectItems value="#{categoryBean.categories}" var="category"
-                       itemLabel="#{category.name}" itemValue="#{category}"/>
-        <p:ajax listener="#{categoryBean.selectOneMenuListener}" update="sub-category"/>
-    </p:selectOneMenu>
-    <h:outputLabel for="sub-category" value="Subcategory: * "/>
-    <p:selectOneMenu id="sub-category" required="true"
-                     value="#{categoryBean.subCategory}"
-                     converter="#{categoryVoConverter}">
-        <f:selectItem itemLabel="Select one!" itemValue=""/>
-        <f:selectItems value="#{categoryBean.subCategories}" var="subcategory"
-                       itemLabel="#{subcategory.name}" itemValue="#{subcategory}"/>
-    </p:selectOneMenu>
-</h:form>
+
+        <h:form id="product-update">
+            <p:wizard styleClass="wizard" flowListener="#{productUpdateBean.onFlowProcess}">
+                <p:tab id="general" title="General">
+                    <p:panel header="General informations">
+                        <p:panelGrid columns="2" layout="grid">
+                            <h:outputLabel for="name" value="Name: * "/>
+                            <p:inputText id="name" required="true"/>
+                            <h:outputLabel for="number" value="Number: * "/>
+                            <p:inputText id="number" required="true"/>
+                            <h:outputLabel for="description" value="Description: * "/>
+                            <p:inputTextarea id="description" required="true"
+                                             rows="4"
+                                             cols="40"
+                            />
+                            <h:outputLabel for="category" value="Category: * "/>
+                            <p:selectOneMenu id="category" required="true"
+                                             value="#{categoryBean.category}"
+                                             converter="#{categoryVoConverter}">
+                                <f:selectItem itemLabel="Select one!" itemValue=""/>
+                                <f:selectItems value="#{categoryBean.categories}" var="category"
+                                               itemLabel="#{category.name}" itemValue="#{category}"/>
+                                <p:ajax listener="#{categoryBean.selectOneMenuListener}" update="sub-category"/>
+                            </p:selectOneMenu>
+                            <h:outputLabel for="sub-category" value="Subcategory: * "/>
+                            <p:selectOneMenu id="sub-category" required="true"
+                                             value="#{categoryBean.subCategory}"
+                                             converter="#{subCategoryVoConverter}">
+                                <f:selectItem itemLabel="Select one!" itemValue=""/>
+                                <f:selectItems value="#{categoryBean.subCategories}" var="subcategory"
+                                               itemLabel="#{subcategory.name}" itemValue="#{subcategory}"/>
+                            </p:selectOneMenu>
+                        </p:panelGrid>
+                    </p:panel>
+                </p:tab>
+                <p:tab id="file" title="File update">
+                    <p:panel header="General informations">
+                        <p:fileUpload mode="advanced" dragDropSupport="false"
+                                      update="messages" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+
+                        <p:growl id="messages" showDetail="true" />
+                    </p:panel>
+                </p:tab>
+            </p:wizard>
+        </h:form>
     </ui:define>
 </ui:composition>
 </html>
