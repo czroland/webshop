@@ -9,34 +9,20 @@
             </div>
         </div>
 
-        <div class="col-md-9">
-            <div class="row carousel-holder">
-                <div class="col-md-12">
-                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                            </div>
-                            <div class="item">
-                                <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                            </div>
-                            <div class="item">
-                                <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                            </div>
-                        </div>
-                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                        </a>
-                    </div>
-                </div>
+        <div class="col-md-9" carousel-modal>
+            <div class="carousel">
+                <ul class="pictures">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <ul class="indicators">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <span class="control prev glyphicon glyphicon-chevron-left"></span>
+                <span class="control next glyphicon glyphicon-chevron-right"></span>
             </div>
 
             <div class="search-bar row">
@@ -46,7 +32,7 @@
                            name="search"
                            class="form-control"
                            placeholder="Search..."
-                           ng-model="search" />
+                           ng-model="search"/>
                     <i class="glyphicon glyphicon-search"></i>
                 </div>
                 <div class="sort col-md-6">
