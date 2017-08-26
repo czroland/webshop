@@ -28,6 +28,10 @@ public class ProductImageServiceImpl extends AbstractEntityVoMapper implements P
             return map(productImage, ProductImageVo.class);
         }
         return null;
+    }
 
+    @Override
+    public void saveImage(ProductImageVo imageVo) {
+        productImageRepository.save(map(imageVo, ProductImageEntity.class));
     }
 }

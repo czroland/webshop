@@ -22,7 +22,7 @@ public class ProductEntity extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String number;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "image_id")
     private ProductImageEntity image;
 

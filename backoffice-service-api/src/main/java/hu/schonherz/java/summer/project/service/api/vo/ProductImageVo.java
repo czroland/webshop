@@ -10,6 +10,4 @@ public class ProductImageVo extends BaseVo {
     private String name;
 
     private String root;
-
-    private ProductVo product;
 }

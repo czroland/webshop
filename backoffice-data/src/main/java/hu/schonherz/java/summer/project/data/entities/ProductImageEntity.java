@@ -18,8 +18,4 @@ public class ProductImageEntity extends BaseEntity {
 
     @Column(nullable = false)
     private String root;
-
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private ProductEntity product;
 }
