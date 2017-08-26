@@ -9,9 +9,9 @@
         Product
     </ui:define>
     <ui:define name="body">
-<f:metadata>
-    <f:viewAction action="#{productBean.init}"/>
-</f:metadata>
+        <f:metadata>
+            <f:viewAction action="#{productBean.init}"/>
+        </f:metadata>
         <h:form id="product-update">
             <p:wizard styleClass="wizard" flowListener="#{productUploadBean.onFlowProcess}">
                 <p:tab id="general" title="General">
@@ -48,10 +48,11 @@
                 </p:tab>
                 <p:tab id="file" title="Image upload">
                     <p:panel header="Upload">
-                        <p:fileUpload mode="advanced" fileUploadListener="#{productUploadBean.fileUpload}"
+                        <p:fileUpload multiple="true" mode="advanced"
+                                      fileUploadListener="#{productUploadBean.fileUpload}"
                                       dragDropSupport="false" update="messages" sizeLimit="1000000"
-                                      fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-                        <p:growl id="messages" showDetail="true" />
+                                      fileLimit="5" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
+                        <p:growl id="messages" showDetail="true"/>
                     </p:panel>
                     <p:commandButton value="Upload product" action="#{productUploadBean.doCreate}" process="@this"/>
                 </p:tab>

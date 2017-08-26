@@ -71,7 +71,9 @@ public class MBProductUpload {
         ProductImageVo productImageVo = new ProductImageVo();
         productImageVo.setName(fileName);
         productImageVo.setRoot(path);
-        product.getProduct().setImage(productImageVo);
+        product.getProduct()
+            .getImages()
+            .add(productImageVo);
     }
 
     public File createDir() {

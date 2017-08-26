@@ -2,9 +2,11 @@ package hu.schonherz.java.summer.project.service.api.vo;
 
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @EqualsAndHashCode(callSuper = false)
-@NoArgsConstructor
 public class ProductVo extends BaseVo {
 
     private String name;
@@ -13,9 +15,13 @@ public class ProductVo extends BaseVo {
 
     private String number;
 
-    private ProductImageVo image;
+    private List<ProductImageVo> images;
 
     private CategoryVo category;
 
     private SubCategoryVo subCategory;
+
+    public ProductVo() {
+        images = new ArrayList<>();
+    }
 }

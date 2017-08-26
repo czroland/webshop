@@ -3,6 +3,7 @@ package hu.schonherz.java.summer.project.data.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -22,9 +23,9 @@ public class ProductEntity extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String number;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "image_id")
-    private ProductImageEntity image;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "product_id")
+    private List<ProductImageEntity> images;
 
     @OneToOne
     @JoinColumn(name = "category_id")
