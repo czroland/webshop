@@ -1,6 +1,5 @@
 package hu.schonherz.java.summer.project.integration.rest;
 
-
 import hu.schonherz.java.summer.project.service.api.service.AccessTokenService;
 import hu.schonherz.java.summer.project.service.api.service.CustomerService;
 import hu.schonherz.java.summer.project.service.api.vo.AccessTokenVo;
@@ -21,7 +20,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
-
 
 @Component
 @Path("/user")
@@ -48,14 +46,13 @@ public class UserServiceRest {
             new UsernamePasswordAuthenticationToken(username, password);
         Authentication authentication = this.authManager.authenticate(authenticationToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
-       
+
         Object principal = authentication.getPrincipal();
         if (!(principal instanceof UserDetails)) {
-            System.out.println("alma");
             throw new WebApplicationException(Response.Status.UNAUTHORIZED);
         }
 
-        return accessTokenService.createAccessToken((customerService.getCustomerByName(username)) );
+        return accessTokenService.createAccessToken((customerService.getCustomerByName(username)));
     }
 
     @GET

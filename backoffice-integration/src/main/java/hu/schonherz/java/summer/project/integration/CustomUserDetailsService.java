@@ -1,6 +1,5 @@
 package hu.schonherz.java.summer.project.integration;
 
-
 import hu.schonherz.java.summer.project.service.api.service.CustomerService;
 import hu.schonherz.java.summer.project.service.api.vo.CustomerVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,11 +42,9 @@ public class CustomUserDetailsService implements UserDetailsService {
             e.printStackTrace();
             throw new UsernameNotFoundException(e.getMessage());
         }
-
     }
 
     private User buildUserForAuthentication(CustomerVo customerVo, Set<GrantedAuthority> authorities) {
         return new User(customerVo.getUser().getUsername(), customerVo.getUser().getPassword(), true, true, true, true, authorities);
     }
-
 }

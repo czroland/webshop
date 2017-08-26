@@ -1,6 +1,5 @@
 package hu.schonherz.java.summer.project.integration;
 
-import hu.schonherz.java.summer.project.data.entities.CustomerEntity;
 import hu.schonherz.java.summer.project.service.api.service.CustomerService;
 import hu.schonherz.java.summer.project.service.api.vo.CustomerVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
-
 
 public class AuthenticationTokenProcessingFilter extends GenericFilterBean {
 
@@ -49,7 +47,6 @@ public class AuthenticationTokenProcessingFilter extends GenericFilterBean {
         if (!(request instanceof HttpServletRequest)) {
             throw new RuntimeException("Expecting an HTTP request");
         }
-
         return (HttpServletRequest) request;
     }
 
@@ -61,7 +58,6 @@ public class AuthenticationTokenProcessingFilter extends GenericFilterBean {
         if (authToken == null) {
             authToken = httpRequest.getParameter("token");
         }
-
         return authToken;
     }
 
