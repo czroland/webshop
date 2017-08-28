@@ -336,18 +336,58 @@ footer {
         }
 
         :first-child {
-            background: url("http://lorempixel.com/800/600/") center;
+            background: url("../css/img/truck_sm.jpg") center;
             background-size: cover;
         }
 
         :nth-child(2) {
-            background: url("http://lorempixel.com/800/600/cats") center;
+            background: url("../css/img/train_sm.jpg") center;
             background-size: cover;
         }
 
         :last-child {
-            background: url("http://lorempixel.com/800/600/nature") center;
+            background: url("../css/img/cars_sm.jpg") center;
             background-size: cover;
+
+        }
+
+        @media (min-width: 768px) {
+
+            :first-child {
+                background: url("../css/img/truck_md.jpg") center;
+                background-size: cover;
+            }
+
+            :nth-child(2) {
+                background: url("../css/img/train_md.jpg") center;
+                background-size: cover;
+            }
+
+            :last-child {
+                background: url("../css/img/cars_md.jpg") center;
+                background-size: cover;
+
+            }
+
+        }
+
+        @media (min-width: 1200px) {
+
+            :first-child {
+                background: url("../css/img/truck_lg.jpg") center;
+                background-size: cover;
+            }
+
+            :nth-child(2) {
+                background: url("../css/img/train_lg.jpg") center;
+                background-size: cover;
+            }
+
+            :last-child {
+                background: url("../css/img/cars_lg.jpg") center;
+                background-size: cover;
+
+            }
 
         }
     }
