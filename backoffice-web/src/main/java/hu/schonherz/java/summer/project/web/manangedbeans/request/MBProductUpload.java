@@ -46,6 +46,7 @@ public class MBProductUpload {
         product.getProduct().setCategory(category.getCategory());
         product.getProduct().setSubCategory(category.getSubCategory());
         productService.saveProduct(product.getProduct());
+        product.init();
     }
 
     public void fileUpload(FileUploadEvent event) {

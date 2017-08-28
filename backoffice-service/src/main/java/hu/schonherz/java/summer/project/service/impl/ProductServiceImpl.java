@@ -15,7 +15,7 @@ import java.util.List;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED)
-public class ProductServiceImpl extends AbstractEntityVoMapper implements ProductService{
+public class ProductServiceImpl extends AbstractEntityVoMapper implements ProductService {
 
     @Autowired
     private ProductDao productRepository;
@@ -53,5 +53,10 @@ public class ProductServiceImpl extends AbstractEntityVoMapper implements Produc
             return map(product, ProductVo.class);
         }
         return null;
+    }
+
+    @Override
+    public List<ProductVo> getAllProducts() {
+        return map(productRepository.findAll(), ProductVo.class);
     }
 }

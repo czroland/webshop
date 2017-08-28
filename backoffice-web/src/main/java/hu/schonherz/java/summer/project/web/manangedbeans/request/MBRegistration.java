@@ -30,5 +30,6 @@ public class MBRegistration {
                 .getPassword()));
 
         agentService.saveAgent(agent.getAgent());
+        agent.init();
     }
 }

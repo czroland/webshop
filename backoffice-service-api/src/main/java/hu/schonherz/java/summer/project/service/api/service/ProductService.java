@@ -14,4 +14,6 @@ public interface ProductService {
     ProductVo getProductById(long id);
 
     ProductVo getProductByNumber(String number);
+
+    List<ProductVo> getAllProducts();
 }

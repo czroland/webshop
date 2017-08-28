@@ -10,55 +10,191 @@
     </ui:define>
 
     <ui:define name="body">
-        <h:form>
-            <h:panelGroup id="panel">
-                <p:selectOneRadio id="roles" value="#{MBRole.agentRole}" layout="responsive" columns="5">
-                    <f:selectItems value="#{MBRole.roles}" var="agentRole"
-                                   itemLabel="#{agentRole.name}" itemValue="#{agentRole.name}"/>
-                </p:selectOneRadio>
+        <p:panel>
+            <p:tabView id="tab">
+                <p:tab title="Agents">
+                    <p:commandButton value="New agent" onclick="PF('agent-dialog').show()"/>
+                    <h:form>
+                        <h:panelGroup id="panel">
+                            <p:selectOneRadio id="roles" value="#{MBRole.agentRole}" layout="responsive" columns="5">
+                                <f:selectItems value="#{MBRole.roles}" var="agentRole"
+                                               itemLabel="#{agentRole.name}" itemValue="#{agentRole.name}"/>
+                            </p:selectOneRadio>
 
-                <p:dataTable id="agents" var="agent" value="#{MBAgent.agents.source}"
-                             selection="#{MBAgent.agents.target}" rowKey="#{agent.id}"
-                             style="margin-bottom:0"
-                             rows="20"
-                             paginator="true"
-                             paginatorPosition="bottom"
-                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                             rowsPerPageTemplate="15, 20, 50">
+                            <p:dataTable id="agents" var="agent" value="#{MBAgent.agents.source}"
+                                         widgetVar="aTable"
+                                         selection="#{MBAgent.agents.target}" rowKey="#{agent.id}"
+                                         style="margin-bottom:0"
+                                         rows="20"
+                                         paginator="true"
+                                         paginatorPosition="bottom"
+                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                         rowsPerPageTemplate="15, 20, 50">
 
-                    <p:column selectionMode="multiple" style="width:36px;text-align:center"/>
+                                <p:column selectionMode="multiple" style="width:36px;text-align:center"/>
 
-                    <p:column headerText="Username" sortBy="#{agent.user.name}">
-                        <h:outputText value="#{agent.user.username}"/>
-                    </p:column>
+                                <p:column headerText="Username" sortBy="#{agent.user.name}">
+                                    <h:outputText value="#{agent.user.username}"/>
+                                </p:column>
 
-                    <p:column headerText="E-mail" sortBy="#{agent.user.email}">
-                        <h:outputText value="#{agent.user.email}"/>
-                    </p:column>
+                                <p:column headerText="E-mail" sortBy="#{agent.user.email}">
+                                    <h:outputText value="#{agent.user.email}"/>
+                                </p:column>
 
-                    <p:column headerText="Roles">
-                        <h:dataTable id="asd" var="role" value="#{agent.roles}">
-                            <p:column>
-                                <h:outputText id="as" value="#{role.name}"/>
+                                <p:column headerText="Roles">
+                                    <h:dataTable id="asd" var="role" value="#{agent.roles}">
+                                        <p:column>
+                                            <h:outputText id="as" value="#{role.name}"/>
+                                        </p:column>
+                                    </h:dataTable>
+                                </p:column>
+
+                            </p:dataTable>
+
+                            <p:commandButton id="add-role" value="Add role"
+                                             style="margin-top:5px"
+                                             update="panel"
+                                             action="#{MBRoleManagement.addRole(MBAgent.agents.target, MBRole.agentRole)}"
+                            />
+                            <p:commandButton id="remove-role" value="Remove role"
+                                             style="margin-top:5px"
+                                             update="panel"
+                                             action="#{MBRoleManagement.removeRole(MBAgent.agents.target, MBRole.agentRole)}"
+                            />
+                        </h:panelGroup>
+                    </h:form>
+                    <p:dialog header="New agent" widgetVar="agent-dialog">
+                        <h:form id="registration-form">
+                            <p:messages showSummary="true" showDetail="false"/>
+                            <p:panelGrid columns="2" layout="grid">
+                                <p:outputLabel for="uname" value="Username"/>
+                                <p:inputText id="uname" value="#{MBAgent.agent.user.username}" required="true">
+                                    <f:validator binding="#{usernameValidator}"/>
+                                </p:inputText>
+
+                                <p:outputLabel for="fname" value="Fullname"/>
+                                <p:inputText id="fname" value="#{MBAgent.agent.user.fullName}" required="true"/>
+
+                                <p:outputLabel for="email" value="E-mail"/>
+                                <p:inputText id="email" value="#{MBAgent.agent.user.email}" required="true"/>
+
+                                <p:outputLabel for="phone" value="Phone"/>
+                                <p:inputText id="phone" value="#{MBAgent.agent.user.phone}" required="true"/>
+
+                                <p:outputLabel for="pass1" value="Password"/>
+                                <p:password id="pass1" value="#{MBAgent.agent.user.password}" required="true"
+                                            match="pass2" feedback="true" inline="true"
+                                            validatorMessage="Passwords don't match!">
+                                </p:password>
+
+                                <p:outputLabel for="pass2" value="Password again"/>
+                                <p:password id="pass2" value="#{MBAgent.agent.user.password}" required="true"/>
+
+                            </p:panelGrid>
+                            <p:commandButton value="Registration"
+                                             oncomplete="if(!args.validationFailed){PF('agent-dialog').hide(); registration();}">
+                                <p:remoteCommand name="registration" actionListener="#{MBRegistration.doCreate}"
+                                                 update="@widgetVar(aTable)"/>
+                            </p:commandButton>
+                        </h:form>
+                    </p:dialog>
+                </p:tab>
+
+                <p:tab title="Products">
+                    <p:commandButton value="New product" onclick="PF('product-dialog').show()"/>
+
+                    <h:panelGroup id="panel2">
+                        <p:dataTable id="products" var="product" value="#{productBean.products}"
+                                     widgetVar="pTable"
+                                     rowKey="#{product.id}"
+                                     style="margin-bottom:0"
+                                     rows="20"
+                                     paginator="true"
+                                     paginatorPosition="bottom"
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="15, 20, 50">
+
+                            <p:column headerText="Name" sortBy="#{product.name}">
+                                <h:outputText value="#{product.name}"/>
                             </p:column>
-                        </h:dataTable>
-                    </p:column>
 
-                </p:dataTable>
+                            <p:column headerText="Number" sortBy="#{product.number}">
+                                <h:outputText value="#{product.number}"/>
+                            </p:column>
 
-                <p:commandButton id="add-role" value="Add role"
-                                 style="margin-top:5px"
-                                 update="panel"
-                                 action="#{MBRoleManagement.addRole(MBAgent.agents.target, MBRole.agentRole)}"
-                />
-                <p:commandButton id="remove-role" value="Remove role"
-                                 style="margin-top:5px"
-                                 update="panel"
-                                 action="#{MBRoleManagement.removeRole(MBAgent.agents.target, MBRole.agentRole)}"
-                />
-            </h:panelGroup>
-        </h:form>
+                            <p:column headerText="Description" sortBy="#{product.description}">
+                                <h:outputText value="#{product.description}"/>
+                            </p:column>
 
+                            <p:column headerText="Category" sortBy="#{product.category.name}">
+                                <h:outputText value="#{product.category.name}"/>
+                            </p:column>
+
+                            <p:column headerText="Subcategory" sortBy="#{product.subCategory.name}">
+                                <h:outputText value="#{product.subCategory.name}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:panelGroup>
+
+                    <p:dialog header="New product" widgetVar="product-dialog">
+                        <h:form id="product-update">
+                            <p:wizard styleClass="wizard" flowListener="#{productUploadBean.onFlowProcess}">
+                                <p:tab id="general" title="General">
+                                    <p:panel header="General informations">
+                                        <p:panelGrid columns="2" layout="grid">
+                                            <h:outputLabel for="name" value="Name: * "/>
+                                            <p:inputText id="name" required="true" value="#{productBean.product.name}"/>
+                                            <h:outputLabel for="number" value="Number: * "/>
+                                            <p:inputText id="number" required="true"
+                                                         value="#{productBean.product.number}"/>
+                                            <h:outputLabel for="description" value="Description: * "/>
+                                            <p:inputTextarea id="description" required="true"
+                                                             value="#{productBean.product.description}"
+                                                             rows="4" cols="40"
+                                            />
+                                            <h:outputLabel for="category" value="Category: * "/>
+                                            <p:selectOneMenu id="category" required="true"
+                                                             value="#{categoryBean.category}"
+                                                             converter="#{categoryVoConverter}">
+                                                <f:selectItem itemLabel="Select one!" itemValue=""/>
+                                                <f:selectItems value="#{categoryBean.categories}" var="category"
+                                                               itemLabel="#{category.name}" itemValue="#{category}"/>
+                                                <p:ajax listener="#{categoryBean.selectOneMenuListener}"
+                                                        update="sub-category"/>
+                                            </p:selectOneMenu>
+                                            <h:outputLabel for="sub-category" value="Subcategory: * "/>
+                                            <p:selectOneMenu id="sub-category" required="true"
+                                                             value="#{categoryBean.subCategory}"
+                                                             converter="#{subCategoryVoConverter}">
+                                                <f:selectItem itemLabel="Select one!" itemValue=""/>
+                                                <f:selectItems value="#{categoryBean.subCategories}" var="subcategory"
+                                                               itemLabel="#{subcategory.name}"
+                                                               itemValue="#{subcategory}"/>
+                                            </p:selectOneMenu>
+                                        </p:panelGrid>
+                                    </p:panel>
+                                </p:tab>
+                                <p:tab id="file" title="Image upload">
+                                    <p:panel header="Upload">
+                                        <p:fileUpload multiple="true" mode="advanced"
+                                                      fileUploadListener="#{productUploadBean.fileUpload}"
+                                                      dragDropSupport="false" update="messages" sizeLimit="1000000"
+                                                      fileLimit="5" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
+                                        <p:growl id="messages" showDetail="true"/>
+                                    </p:panel>
+                                    <p:commandButton value="Upload product"
+                                                     oncomplete="if(!args.validationFailed){PF('product-dialog').hide(); productUpload();}">
+                                        <p:remoteCommand name="productUpload"
+                                                         actionListener="#{productUploadBean.doCreate}"
+                                                         update="@widgetVar(pTable)"/>
+                                    </p:commandButton>
+                                </p:tab>
+                            </p:wizard>
+                        </h:form>
+                    </p:dialog>
+                </p:tab>
+            </p:tabView>
+        </p:panel>
     </ui:define>
 </ui:composition>
 </html>
