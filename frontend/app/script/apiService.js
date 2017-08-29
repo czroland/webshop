@@ -9,6 +9,7 @@
         this.getOfferDetail = getOfferDetail;
         this.getOffers = getOffers;
         this.login = login;
+        this.registration = registration;
 
         function getProducts() {
             return $http.get(urlBase + "/product");
@@ -24,6 +25,10 @@
 
         function login(user, remember) {
             return $http.post(urlBase + "/user/login");
+        }
+
+        function registration(newCustomer) {
+            return $http.post(urlBase + "/user/signup", newCustomer);
         }
     }
 })();
