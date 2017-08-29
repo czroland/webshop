@@ -3,9 +3,7 @@ package hu.schonherz.java.summer.project.data.entities;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -30,5 +28,6 @@ public class UserEntity extends BaseEntity {
 
     @Column(nullable = false)
     private String password;
+
 
 }
