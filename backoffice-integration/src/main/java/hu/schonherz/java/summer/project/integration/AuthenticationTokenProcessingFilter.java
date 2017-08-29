@@ -29,7 +29,7 @@ public class AuthenticationTokenProcessingFilter extends GenericFilterBean {
 
         String accessToken = this.extractAccessTokenFromRequest(httpRequest);
         if (accessToken != null) {
-            CustomerVo customer = customerService.getCustomerbyAccessToken(accessToken);
+            CustomerVo customer = customerService.getCustomerByAccessToken(accessToken);
             if (customer != null) {
 
                 Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();

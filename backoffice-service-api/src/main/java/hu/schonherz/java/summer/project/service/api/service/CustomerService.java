@@ -9,5 +9,7 @@ public interface CustomerService {
 
     CustomerVo getCustomerByName(String name);
 
-    CustomerVo getCustomerbyAccessToken(String token);
+    CustomerVo getCustomerByAccessToken(String token);
+
+    CustomerVo getCustomerById(Long id);
 }

@@ -47,7 +47,7 @@ public class CustomerServiceImpl extends AbstractEntityVoMapper implements Custo
     }
 
     @Override
-    public CustomerVo getCustomerbyAccessToken(String token) {
+    public CustomerVo getCustomerByAccessToken(String token) {
         AccessToken accessToken = accessTokenRepository.findByToken(token);
 
         if (accessToken == null) {
@@ -58,5 +58,10 @@ public class CustomerServiceImpl extends AbstractEntityVoMapper implements Custo
             return null;
         }
         return map(accessToken.getCustomer(), CustomerVo.class);
+    }
+
+    @Override
+    public CustomerVo getCustomerById(Long id) {
+        return map(customerRepository.findById(id), CustomerVo.class);
     }
 }

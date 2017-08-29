@@ -26,9 +26,6 @@ import javax.ws.rs.core.UriInfo;
 public class UserServiceRest {
 
     @Autowired
-    private UserServiceBean userService;
-
-    @Autowired
     private CustomerService customerService;
 
     @Autowired
@@ -70,21 +67,14 @@ public class UserServiceRest {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response addUser(UserVo user, @Context UriInfo uriInfo) {
-        userService.registrationUser(user);
+    public Response addUser(CustomerVo customer, @Context UriInfo uriInfo) {
+
+        customerService.saveCustomer(customer);
 
         return Response.status(Response.Status.CREATED.getStatusCode())
             .header(
                 "Location",
                 String.format("%s/%s", uriInfo.getAbsolutePath().toString(),
-                    user.getId())).build();
+                    customer.getId())).build();
     }
-
-    @GET
-    @Path("/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public UserVo getEmployee(@PathParam("id") Long id) {
-        return userService.findById(id);
-    }
-
 }
