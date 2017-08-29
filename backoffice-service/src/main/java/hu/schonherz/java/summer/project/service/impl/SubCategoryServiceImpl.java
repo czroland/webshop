@@ -1,6 +1,7 @@
 package hu.schonherz.java.summer.project.service.impl;
 
 import hu.schonherz.java.summer.project.data.dao.SubCategoryDao;
+import hu.schonherz.java.summer.project.data.entities.SubCategoryEntity;
 import hu.schonherz.java.summer.project.service.api.service.SubCategoryService;
 import hu.schonherz.java.summer.project.service.api.vo.SubCategoryVo;
 import hu.schonherz.java.summer.project.service.mapper.AbstractEntityVoMapper;
@@ -26,5 +27,10 @@ public class SubCategoryServiceImpl extends AbstractEntityVoMapper implements Su
     @Override
     public List<SubCategoryVo> getAllSubCategoriesByCategoryId(Long id) {
         return map(subCategoryDao.findByCategoryId(id), SubCategoryVo.class);
+    }
+
+    @Override
+    public void addSubCategory(SubCategoryVo subCategoryVo) {
+        subCategoryDao.save(map(subCategoryVo, SubCategoryEntity.class));
     }
 }

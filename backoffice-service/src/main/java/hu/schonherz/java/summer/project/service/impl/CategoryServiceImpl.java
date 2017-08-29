@@ -2,6 +2,7 @@ package hu.schonherz.java.summer.project.service.impl;
 
 
 import hu.schonherz.java.summer.project.data.dao.CategoryDao;
+import hu.schonherz.java.summer.project.data.entities.CategoryEntity;
 import hu.schonherz.java.summer.project.service.api.service.CategoryService;
 import hu.schonherz.java.summer.project.service.api.vo.CategoryVo;
 import hu.schonherz.java.summer.project.service.mapper.AbstractEntityVoMapper;
@@ -27,5 +28,10 @@ public class CategoryServiceImpl extends AbstractEntityVoMapper implements Categ
     @Override
     public CategoryVo getCategoryById(Long id) {
         return map(categoryDao.findOne(id), CategoryVo.class);
+    }
+
+    @Override
+    public void addCategory(CategoryVo categoryVo) {
+        categoryDao.save(map(categoryVo, CategoryEntity.class));
     }
 }
