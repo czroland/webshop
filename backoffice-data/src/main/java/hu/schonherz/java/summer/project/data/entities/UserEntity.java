@@ -29,8 +29,5 @@ public class UserEntity extends BaseEntity {
     @Column(nullable = false)
     private String password;
 
-    @OneToOne
-    @JoinColumn(name = "basket_id")
-    private BasketEntity basketEntity;
 
 }
