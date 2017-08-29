@@ -193,6 +193,59 @@
                         </h:form>
                     </p:dialog>
                 </p:tab>
+
+                <p:tab title="Categories">
+                    <h:form>
+                        <p:panelGrid columns="5" layout="grid">
+                            <h:outputLabel for="cat" value="Category: * "/>
+                            <p:selectOneMenu id="cat" required="true"
+                                             value="#{categoryBean.category}"
+                                             converter="#{categoryVoConverter}">
+                                <f:selectItem itemLabel="Select one!" itemValue=""/>
+                                <f:selectItems value="#{categoryBean.categories}" var="c"
+                                               itemLabel="#{c.name}" itemValue="#{c}"/>
+                            </p:selectOneMenu>
+                            <h:outputLabel for="subCat" value="Subcategory: * "/>
+                            <p:inputText id="subCat" required="true" value="#{categoryBean.subCategoryC.name}"/>
+                            <p:commandButton value="Add subcategory" actionListener="#{categoryMnmtBean.doCreate}"
+                                             update="@widgetVar(cTable)"/>
+                        </p:panelGrid>
+                    </h:form>
+                    <h:form>
+                        <p:panelGrid columns="5" layout="grid">
+                            <h:outputLabel for="c" value="Category: * "/>
+                            <p:inputText id="c" required="true" value="#{categoryBean.categoryC.name}"/>
+                            <p:commandButton value="Add category" actionListener="#{categoryMnmtBean.doCreateCategory}"
+                                             update="@widgetVar(cTable)"/>
+                        </p:panelGrid>
+                    </h:form>
+
+                    <h:panelGroup id="panel3">
+                        <p:dataTable id="categories" var="cat" value="#{categoryBean.categories}"
+                                     widgetVar="cTable"
+                                     rowKey="#{cat.id}"
+                                     style="margin-bottom:0"
+                                     rows="20"
+                                     paginator="true"
+                                     paginatorPosition="bottom"
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="15, 20, 50">
+
+                            <p:column headerText="Name" sortBy="#{cat.name}">
+                                <h:outputText value="#{cat.name}"/>
+                            </p:column>
+
+                            <p:column headerText="Subcategories">
+                                <h:dataTable id="scat" var="subCat"
+                                             value="#{categoryBean.subCategoryService.getAllSubCategoriesByCategoryId(cat.id)}">
+                                    <p:column>
+                                        <h:outputText id="nm" value="#{subCat.name}"/>
+                                    </p:column>
+                                </h:dataTable>
+                            </p:column>
+                        </p:dataTable>
+                    </h:panelGroup>
+                </p:tab>
             </p:tabView>
         </p:panel>
     </ui:define>

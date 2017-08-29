@@ -10,8 +10,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import javax.faces.event.AjaxBehaviorEvent;
-import javax.faces.event.ValueChangeEvent;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,13 +32,16 @@ public class MBCategory implements Serializable {
 
     private CategoryVo category;
     private SubCategoryVo subCategory;
+    private SubCategoryVo subCategoryC = new SubCategoryVo();
+    private CategoryVo categoryC = new CategoryVo();
+
 
     @PostConstruct
     public void init() {
         categories = categoryService.getAllCategories();
     }
 
-    public void selectOneMenuListener(AjaxBehaviorEvent event) {
+    public void selectOneMenuListener() {
         subCategories = subCategoryService.getAllSubCategoriesByCategoryId(category.getId());
     }
-    }
+}

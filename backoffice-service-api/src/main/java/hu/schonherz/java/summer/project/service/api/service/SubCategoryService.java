@@ -10,4 +10,6 @@ public interface SubCategoryService {
     SubCategoryVo getSubCategoryById(Long id);
 
     List<SubCategoryVo> getAllSubCategoriesByCategoryId(Long id);
+
+    void addSubCategory(SubCategoryVo subCategoryVo);
 }

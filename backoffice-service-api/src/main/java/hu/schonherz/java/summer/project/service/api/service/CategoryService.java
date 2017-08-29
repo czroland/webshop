@@ -10,4 +10,6 @@ public interface CategoryService {
     List<CategoryVo> getAllCategories();
 
     CategoryVo getCategoryById(Long id);
+
+    void addCategory(CategoryVo categoryVo);
 }
