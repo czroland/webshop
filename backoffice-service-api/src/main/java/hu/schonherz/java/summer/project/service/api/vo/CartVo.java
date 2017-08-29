@@ -1,21 +1,17 @@
 package hu.schonherz.java.summer.project.service.api.vo;
 
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
-public class CustomerVo extends BaseVo {
+public class CartVo extends BaseVo {
 
-    private UserVo user;
-
-    private AddressVo billingAddress;
-
-    private AddressVo deliveryAddress;
-
-    private String role;
-
-    private CartVo cartVo;
+    private UserVo userVo;
+    private List<ProductVo> productVos;
 }
