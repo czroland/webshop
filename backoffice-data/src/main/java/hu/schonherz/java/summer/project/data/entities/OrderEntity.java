@@ -23,6 +23,5 @@ public class OrderEntity extends BaseEntity {
     private CustomerEntity customer;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "products")
     private List<ProductEntity> products;
 }
