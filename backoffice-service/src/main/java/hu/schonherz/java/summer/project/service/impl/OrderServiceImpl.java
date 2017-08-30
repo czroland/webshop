@@ -38,4 +38,9 @@ public class OrderServiceImpl extends AbstractEntityVoMapper implements OrderSer
     public List<OrderVo> getAllOrders() {
         return map(orderRepository.findAll(), OrderVo.class);
     }
+
+    @Override
+    public OrderVo getOrderByPrice(Double price) {
+        return map(orderRepository.findByPrice(price), OrderVo.class);
+    }
 }

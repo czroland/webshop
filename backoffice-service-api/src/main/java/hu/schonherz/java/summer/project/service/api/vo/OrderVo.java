@@ -13,6 +13,8 @@ public class OrderVo extends BaseVo {
 
     private Date date;
 
+    private Double price;
+
     private CustomerVo customer;
 
     private List<ProductVo> products;

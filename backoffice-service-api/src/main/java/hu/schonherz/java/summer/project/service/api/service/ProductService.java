@@ -16,4 +16,6 @@ public interface ProductService {
     ProductVo getProductByNumber(String number);
 
     List<ProductVo> getAllProducts();
+
+    ProductVo getProductByPrice(Double price);
 }

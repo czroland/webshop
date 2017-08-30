@@ -13,6 +13,8 @@ public class ProductVo extends BaseVo {
 
     private String description;
 
+    private Double price;
+
     private String number;
 
     private List<ProductImageVo> images;

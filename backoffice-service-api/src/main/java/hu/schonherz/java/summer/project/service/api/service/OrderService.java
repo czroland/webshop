@@ -12,4 +12,6 @@ public interface OrderService {
     OrderVo getOrderById(long id);
 
     List<OrderVo> getAllOrders();
+
+    OrderVo getOrderByPrice(Double price);
 }
