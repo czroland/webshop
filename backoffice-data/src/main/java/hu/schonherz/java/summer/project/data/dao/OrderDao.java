@@ -13,4 +13,5 @@ public interface OrderDao extends JpaRepository<OrderEntity, Long> {
 
     List<OrderEntity> findAll();
 
+    OrderEntity findByPrice(Double price);
 }

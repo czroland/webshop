@@ -59,4 +59,9 @@ public class ProductServiceImpl extends AbstractEntityVoMapper implements Produc
     public List<ProductVo> getAllProducts() {
         return map(productRepository.findAll(), ProductVo.class);
     }
+
+    @Override
+    public ProductVo getProductByPrice(Double price) {
+        return map(productRepository.findByPrice(price), ProductVo.class);
+    }
 }

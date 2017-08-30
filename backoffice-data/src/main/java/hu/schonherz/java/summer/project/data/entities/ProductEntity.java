@@ -20,6 +20,9 @@ public class ProductEntity extends BaseEntity {
     @Basic
     private String description;
 
+    @Column(nullable = false)
+    private Double price;
+
     @Column(nullable = false, unique = true)
     private String number;
 

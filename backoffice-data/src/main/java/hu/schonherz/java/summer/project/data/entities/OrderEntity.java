@@ -18,6 +18,9 @@ public class OrderEntity extends BaseEntity {
     @Column(nullable = false)
     private Date date;
 
+    @Column(nullable = false)
+    private Double price;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
     private CustomerEntity customer;
