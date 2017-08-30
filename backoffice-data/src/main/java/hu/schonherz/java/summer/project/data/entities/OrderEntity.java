@@ -15,8 +15,8 @@ import java.util.List;
 @AllArgsConstructor
 public class OrderEntity extends BaseEntity {
 
-    @Column(nullable = false)
-    private Date date;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date sendDate;
 
     @Column(nullable = false)
     private Double price;
@@ -27,4 +27,10 @@ public class OrderEntity extends BaseEntity {
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private List<ProductEntity> products;
+
+    @Column(nullable=false)
+    private boolean isSuccess;
+
+    @Column
+    private Date successDate;
 }
