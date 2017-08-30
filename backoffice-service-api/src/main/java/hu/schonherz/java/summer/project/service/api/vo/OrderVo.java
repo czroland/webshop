@@ -22,5 +22,9 @@ public class OrderVo extends BaseVo {
     public OrderVo() {
         products = new ArrayList<>();
     }
+
+    private boolean isSuccess;
+
+    private Date successDate;
 }
 
