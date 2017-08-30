@@ -22,8 +22,8 @@ body {
 }
 
 .search-bar {
+    margin: 2rem 0;
     .search {
-        padding-bottom: 2rem;
         position: relative;
         input {
             padding-right: 3rem;
@@ -35,7 +35,6 @@ body {
         }
     }
     .sort {
-        padding-bottom: 2rem;
         text-align: right;
         select {
             display: inline;
@@ -51,10 +50,10 @@ body {
             input {
                 display: none;
                 &:checked + .slider {
-                    background-color: #7f7f7f;
+                    background-color: darkred;
                 }
                 &:checked + .slider:before {
-                    background-color: #101010;
+                    background-color: red;
                     transform: translateX(1.25rem);
                 }
             }
@@ -86,6 +85,7 @@ body {
 
 @media only screen and (max-width: 992px) {
     .search-bar .sort {
+        margin-top: 2rem;
         text-align: center;
     }
 }
@@ -124,10 +124,62 @@ body {
                 bottom: 1rem;
                 position: absolute;
                 right: 1rem;
+                &:hover + .button-tooltip-small {
+                    opacity: 1;
+                }
             }
         }
     }
 }
+
+.button-tooltip {
+    border-radius: .5em;
+    background-color: #222;
+    color: #9d9d9d;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    transition: .5s;
+    &:after {
+        border-style: solid;
+        border-color: transparent transparent transparent #222;
+        content: "";
+        position: absolute;
+    }
+    p {
+        margin: 0;
+    }
+}
+
+.button-tooltip-big {
+    bottom: 2.85em;
+    right: 5em;
+    width: 275px;
+    &:after {
+        border-width: 7.5px;
+        right: -15px;
+        top: 35%;
+    }
+    p {
+        font-size: 1.15em;
+        padding: .75em;
+    }
+}
+
+.button-tooltip-small {
+    bottom: .8em;
+    right: 4em;
+    width: 200px;
+    &:after {
+        border-width: 5px;
+        right: -10px;
+        top: 37.5%;
+    }
+    p {
+        padding: .5em;
+    }
+}
+
 
 .offer-detail {
     .offer-name {
@@ -162,6 +214,9 @@ body {
             bottom: 4rem;
             position: absolute;
             right: 1rem;
+            &:hover + .button-tooltip {
+                opacity: 1;
+            }
         }
     }
 }

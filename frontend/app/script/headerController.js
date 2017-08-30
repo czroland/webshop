@@ -22,9 +22,8 @@
             }
             else {
                 $scope.loggedUser = {
-                    username: undefined,
                     token: undefined,
-                    logged: false
+                    authenticated: false
                 };
             }
         }

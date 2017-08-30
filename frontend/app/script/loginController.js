@@ -11,19 +11,11 @@
             }, $scope.remember)
                 .then(function (response) {
                     if ($scope.remember) {
-                        localStorage.setItem('loggedUser', JSON.stringify({
-                            username: $scope.username,
-                            token: response.data.token,
-                            logged: true
-                        }));
+                        localStorage.setItem('loggedUser', JSON.stringify(response.data));
                     } else {
-                        sessionStorage.setItem('loggedUser', JSON.stringify({
-                            username: $scope.username,
-                            token: response.data.token,
-                            logged: true
-                        }));
+                        sessionStorage.setItem('loggedUser', JSON.stringify(response.data));
                     }
-                    $rootScope.$broadcast('loginStateChange', true);
+                    $rootScope.$broadcast('loginStateChange');
                     $location.path('/');
                 });
         };

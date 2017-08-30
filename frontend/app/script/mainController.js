@@ -10,12 +10,20 @@
                     $scope.offers = response.data.offers;
                 });
         };
+
         $scope.sortByOptions = [
             {name: "Name", value: "name"},
             {name: "Price", value: "price"}
         ];
+
         $scope.selectedOption = $scope.sortByOptions[0];
 
+        function disableButtons () {
+            $scope.disableButtons = (!!localStorage.getItem('loggedUser') || !!sessionStorage.getItem('loggedUser')) ? false : true;
+        }
+
         $scope.getOffers();
+        disableButtons();
+
     }
 })();

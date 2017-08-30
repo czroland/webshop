@@ -44,14 +44,14 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li ng-show="!loggedUser.logged"><a href="#/signup"><i class="glyphicon glyphicon-user"></i> Sign Up</a>
+                    <li ng-show="!loggedUser.authenticated"><a href="#/signup"><i class="glyphicon glyphicon-user"></i> Sign Up</a>
                     </li>
-                    <li ng-show="!loggedUser.logged"><a href="#/login"><i class="glyphicon glyphicon-log-in"></i> Log In</a>
+                    <li ng-show="!loggedUser.authenticated"><a href="#/login"><i class="glyphicon glyphicon-log-in"></i> Log In</a>
                     </li>
-                    <li ng-show="loggedUser.logged"><a href="#/profile"><i class="glyphicon glyphicon-edit"></i> My
-                        profile ({{loggedUser.username}})</a></li>
+                    <li ng-show="loggedUser.authenticated"><a href="#/profile"><i class="glyphicon glyphicon-edit"></i> My
+                        profile ({{loggedUser.user.userName}})</a></li>
                     <li><a href="/#"><i class="glyphicon glyphicon-shopping-cart"></i> Cart</a></li>
-                    <li ng-show="loggedUser.logged" ng-click="logout()"><a href="/#"><i
+                    <li ng-show="loggedUser.authenticated" ng-click="logout()"><a href="/#"><i
                         class="glyphicon glyphicon-log-out"></i> Logout</a></li>
                 </ul>
             </div>

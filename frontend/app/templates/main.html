@@ -81,9 +81,12 @@
                                 <h5>Details...</h5>
                             </a>
                         </div>
-                        <button type="button" class="btn btn-default">
+                        <button type="button" class="btn btn-default" ng-disabled="disableButtons">
                             <i class="glyphicon glyphicon-shopping-cart"></i>
                         </button>
+                        <div class="button-tooltip button-tooltip-small" ng-if="disableButtons">
+                            <p>Please log in to purchase.</p>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -665,5 +665,26 @@ if( requestBody.contains("some data") )
 }
 */
 </con:dispatchPath><con:response name="Login" id="72c7cab9-b4c0-471a-a1b0-b9b686c0e343" httpResponseStatus="200" mediaType="application/json"><con:settings/><con:responseContent>{
-	"token": "sdiufh784z82hdiuhg837zt8dhjshdf283z98jvbxmvb2398"	
+	"token": "sdiufh784z82hdiuhg837zt8dhjshdf283z98jvbxmvb2398",
+	"authenticated": true,
+	"user": {
+		"role": "COSTUMER",
+		"userName": "User",
+		"fullName": "User User",
+		"email": "user@example.com",
+		"phone": "0123456789",
+		"password": "12345",
+		"billingAddress": {
+			"zipCode": 1234,
+			"settlement": "No-man's Land",
+			"street": "Somewhere st.",
+			"houseNumber": 22
+		},
+		"deliveryAddress": {
+			"zipCode": 1234,
+			"settlement": "No-man's Land",
+			"street": "Somewhere st.",
+			"houseNumber": 22
+		}	
+	}	
 }</con:responseContent><con:header><con:name>Access-Control-Allow-Origin</con:name><con:value>*</con:value></con:header><con:header><con:name>status</con:name><con:value>login</con:value></con:header></con:response></con:restMockAction></con:restMockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

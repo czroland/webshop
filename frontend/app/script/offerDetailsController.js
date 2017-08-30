@@ -8,5 +8,11 @@
             .then(function (response) {
                 $scope.offer = response.data;
             });
+
+        function disableButton () {
+            $scope.disableButton = (!!localStorage.getItem('loggedUser') || !!sessionStorage.getItem('loggedUser')) ? false : true;
+        }
+
+        disableButton();
     }
 })();
