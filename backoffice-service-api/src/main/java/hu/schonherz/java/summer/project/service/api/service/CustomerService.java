@@ -3,6 +3,8 @@ package hu.schonherz.java.summer.project.service.api.service;
 
 import hu.schonherz.java.summer.project.service.api.vo.CustomerVo;
 
+import java.util.List;
+
 public interface CustomerService {
 
     void saveCustomer(CustomerVo customer);
@@ -12,4 +14,7 @@ public interface CustomerService {
     CustomerVo getCustomerByAccessToken(String token);
 
     CustomerVo getCustomerById(Long id);
+
+    List<CustomerVo> getAllCustomers();
+
 }

@@ -25,7 +25,6 @@ public class CustomerEntity extends BaseEntity {
     @JoinColumn(name = "delivery_address_id")
     private AddressEntity deliveryAddress;
 
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cart_id")
     private CartEntity cartEntity;

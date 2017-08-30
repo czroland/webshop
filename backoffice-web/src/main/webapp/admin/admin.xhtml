@@ -122,6 +122,10 @@
                                 <h:outputText value="#{product.number}"/>
                             </p:column>
 
+                            <p:column headerText="Price" sortBy="#{product.price}">
+                                <h:outputText value="#{product.price}"/>
+                            </p:column>
+
                             <p:column headerText="Description" sortBy="#{product.description}">
                                 <h:outputText value="#{product.description}"/>
                             </p:column>
@@ -152,6 +156,9 @@
                                                              value="#{productBean.product.description}"
                                                              rows="4" cols="40"
                                             />
+                                            <h:outputLabel for="price" value="Price: * "/>
+                                            <p:inputNumber id="price" required="true"
+                                                           value="#{productBean.product.price}"/>
                                             <h:outputLabel for="category" value="Category: * "/>
                                             <p:selectOneMenu id="category" required="true"
                                                              value="#{categoryBean.category}"
@@ -246,6 +253,74 @@
                         </p:dataTable>
                     </h:panelGroup>
                 </p:tab>
+
+                <p:tab title="Customers">
+                    <p:dataTable id="customers" var="customer" value="#{customerBean.customers}"
+                                 widgetVar="cmTable"
+                                 rowKey="#{customer.id}"
+                                 style="margin-bottom:0"
+                                 rows="20"
+                                 paginator="true"
+                                 paginatorPosition="bottom"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="15, 20, 50">
+
+                        <p:columnGroup type="header">
+                            <p:row>
+                                <p:column rowspan="3" headerText="Username" sortBy="#{customer.user.name}"/>
+                                <p:column rowspan="3" headerText="E-mail" sortBy="#{customer.user.email}"/>
+                                <p:column colspan="8" headerText="Addresses"/>
+                            </p:row>
+                            <p:row>
+                                <p:column colspan="4" headerText="Delivery Address"/>
+                                <p:column colspan="4" headerText="Billing Address"/>
+                            </p:row>
+                            <p:row>
+                                <p:column headerText="Zip code" sortBy="#{customer.deliveryAddress.zipCode}"/>
+                                <p:column headerText="City" sortBy="#{customer.deliveryAddress.city}"/>
+                                <p:column headerText="Street" sortBy="#{customer.deliveryAddress.street}"/>
+                                <p:column headerText="Number" sortBy="#{customer.deliveryAddress.number}"/>
+                                <p:column headerText="Zip code" sortBy="#{customer.billingAddress.zipCode}"/>
+                                <p:column headerText="City" sortBy="#{customer.billingAddress.city}"/>
+                                <p:column headerText="Street" sortBy="#{customer.billingAddress.street}"/>
+                                <p:column headerText="Number" sortBy="#{customer.billingAddress.number}"/>
+                            </p:row>
+                        </p:columnGroup>
+
+                        <p:column>
+                            <h:outputText value="#{customer.user.username}"/>
+                        </p:column>
+
+                        <p:column>
+                            <h:outputText value="#{customer.user.email}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{customer.deliveryAddress.zipCode}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{customer.deliveryAddress.city}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{customer.deliveryAddress.street}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{customer.deliveryAddress.number}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{customer.billingAddress.zipCode}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{customer.billingAddress.city}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{customer.billingAddress.street}"/>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{customer.billingAddress.number}"/>
+                        </p:column>
+                    </p:dataTable>
+                </p:tab>
+
             </p:tabView>
         </p:panel>
     </ui:define>
