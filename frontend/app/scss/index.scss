@@ -461,52 +461,55 @@ footer {
             }
 
         }
-    }
 
-    .indicators {
-        position: absolute;
-        top: 260px;
-        left: 42%;
-        padding: 0;
-
-        li {
-            background-color: white;
-            border-radius: 50%;
-            cursor: pointer;
-            padding: 7px;
-            margin: 10px;
-            list-style: none;
-            float: left;
-        }
-
-        li.active {
-            background-color: red;
-        }
-    }
-
-    .control {
-        position: absolute;
-        top: 140px;
-        color: white;
-        cursor: pointer;
-        background-color: rgba(102, 102, 102, 0.2);
-        border-radius: 50px;
-    }
-
-    .control:hover {
-        background-color: rgba(102, 102, 102, 0.7);
-    }
-
-    .prev {
-        padding: 10px 10px 10px 20px;
-        left: -15px;
-    }
-
-    .next {
-        padding: 10px 20px 10px 10px;
-        right: -15px;
     }
 }
+
+.indicators {
+    position: absolute;
+    top: 260px;
+    left: 42%;
+    padding: 0;
+
+    li {
+        background-color: white;
+        border-radius: 50%;
+        cursor: pointer;
+        padding: 7px;
+        margin: 10px;
+        list-style: none;
+        float: left;
+    }
+
+    li.active {
+        background-color: red;
+    }
+}
+
+.control {
+    position: absolute;
+    top: 140px;
+    color: white;
+    cursor: pointer;
+    background-color: rgba(102, 102, 102, 0.2);
+    border-radius: 50px;
+}
+
+.control:hover {
+    background-color: rgba(102, 102, 102, 0.7);
+}
+
+.prev {
+    padding: 10px 10px 10px 20px;
+    left: -15px;
+}
+
+.next {
+    padding: 10px 20px 10px 10px;
+    right: -15px;
+}
+
+
 
 .buttonx {
     display: inline-block;
