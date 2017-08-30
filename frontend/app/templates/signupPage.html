@@ -99,7 +99,10 @@
                     <label for="newsletter"><input type="checkbox" id="newsletter">
                         I want to receive notification about the latest offers</label>
                 </div>
-                <div ng-show="unsuccessfulReg">Something went wrong. Please try again later.</div>
+                <div id="successPopup" ng-show="successfulReg">Sign Up completed! You are being redirected to login
+                    page.
+                </div>
+                <div id="errorPopup" ng-show="unsuccessfulReg">Something went wrong. Please try again.</div>
                 <div id="submitButton">
                     <button type="submit" class="btn btn-primary">Create new account</button>
                 </div>

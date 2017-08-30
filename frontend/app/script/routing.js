@@ -8,7 +8,8 @@
                     controller: 'mainController'
                 })
                 .when('/signup', {
-                    templateUrl: 'templates/signupPage.html'
+                    templateUrl: 'templates/signupPage.html',
+                    controller: 'registrationController'
                 })
                 .when('/login', {
                     templateUrl: 'templates/loginPage.html',
