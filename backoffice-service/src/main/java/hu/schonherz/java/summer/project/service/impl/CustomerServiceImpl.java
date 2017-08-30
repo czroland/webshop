@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional(propagation = Propagation.REQUIRED)
 public class CustomerServiceImpl extends AbstractEntityVoMapper implements CustomerService {
@@ -63,5 +65,10 @@ public class CustomerServiceImpl extends AbstractEntityVoMapper implements Custo
     @Override
     public CustomerVo getCustomerById(Long id) {
         return map(customerRepository.findById(id), CustomerVo.class);
+    }
+
+    @Override
+    public List<CustomerVo> getAllCustomers() {
+        return map(customerRepository.findAll(), CustomerVo.class);
     }
 }
