@@ -18,11 +18,11 @@ INSERT INTO public.subcategories(id, name, category_id) VALUES (-1, 'alma',-1);
 INSERT INTO public.subcategories(id, name, category_id) VALUES (-2, 'korte',-1);
 INSERT INTO public.subcategories(id, name, category_id) VALUES (-3, 'paradicsom',-2);
 
-INSERT INTO public.products(id,description, name, number, category_id, sub_category_id, price) VALUES (-1,'schőn product','product','123',-1,-1, 5)
-INSERT INTO public.products(id,description, name, number, category_id, sub_category_id, price) VALUES (-2,'schőn product2','product2','321',-2,-1, 78)
+INSERT INTO public.products(id,description, name, number, category_id, sub_category_id, price) VALUES (-1,'schőn product','product','123',-1,-1, 5);
+INSERT INTO public.products(id,description, name, number, category_id, sub_category_id, price) VALUES (-2,'schőn product2','product2','321',-2,-1, 78);
 
-INSERT INTO public.products_images(id,name,root,product_id) VALUES (-1,'image','root',-1)
-INSERT INTO public.products_images(id,name,root,product_id) VALUES (-2,'image2','root2',-2)
+INSERT INTO public.products_images(id,name,root,product_id) VALUES (-1,'image','root',-1);
+INSERT INTO public.products_images(id,name,root,product_id) VALUES (-2,'image2','root2',-2);
 
-
-
+INSERT INTO public.orders(id, issuccess, price, senddate, customer_id) VALUES (-1, false, 5, '2050-05-09', -1);
+INSERT INTO public.orders_products(orderentity_id,products_id) VALUES (-1,-1);
