@@ -321,6 +321,94 @@
                     </p:dataTable>
                 </p:tab>
 
+                <p:tab title="Orders">
+                    <h:form>
+                        <p:commandButton id="order" value="Fulfill orders"
+                                         style="margin-top:5px"
+                                         update="panel4"
+                                         action="#{orderMnmtBean.fulfillOrder(orderBean.orders.target)}"
+                        />
+                        <h:panelGroup id="panel4">
+                            <p:dataTable id="orders" var="order" value="#{orderBean.orders.source}"
+                                         widgetVar="oTable"
+                                         selection="#{orderBean.orders.target}"
+                                         tableStyle="width:auto"
+                                         rowKey="#{order.id}" reflow="true"
+                                         style="margin-bottom:0"
+                                         rows="20"
+                                         paginator="true"
+                                         paginatorPosition="bottom"
+                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                         rowsPerPageTemplate="15, 20, 50">
+
+                                <p:column selectionMode="multiple" style="width:36px;text-align:center"/>
+
+                                <p:column headerText="Date" sortBy="#{order.sendDate}">
+                                    <h:outputText value="#{order.sendDate}">
+                                        <f:convertDateTime pattern="yyyy/MM/dd HH:mm:ss"/>
+                                    </h:outputText>
+                                </p:column>
+                                <p:column headerText="Price" sortBy="#{order.price}">
+                                    <h:outputText value="#{order.price}"/>
+                                </p:column>
+                                <p:column headerText="Shipped" sortBy="#{order.success}">
+                                    <h:outputText value="#{order.success}"/>
+                                </p:column>
+                                <p:column headerText="Fulfilment date" sortBy="#{order.successDate}">
+                                    <h:outputText value="#{order.successDate}">
+                                        <f:convertDateTime pattern="yyyy/MM/dd HH:mm:ss"/>
+                                    </h:outputText>
+                                </p:column>
+                                <p:column headerText="Customer name" sortBy="#{order.customer.user.username}">
+                                    <h:outputText value="#{order.customer.user.username}"/>
+                                </p:column>
+                                <p:column headerText="Billing addr zip code"
+                                          sortBy="#{order.customer.billingAddress.zipCode}">
+                                    <h:outputText value="#{order.customer.billingAddress.zipCode}"/>
+                                </p:column>
+                                <p:column headerText="Billing addr city"
+                                          sortBy="#{order.customer.billingAddress.city}">
+                                    <h:outputText value="#{order.customer.billingAddress.city}"/>
+                                </p:column>
+                                <p:column headerText="Billing addr street"
+                                          sortBy="#{order.customer.billingAddress.street}">
+                                    <h:outputText value="#{order.customer.billingAddress.street}"/>
+                                </p:column>
+                                <p:column headerText="Billing addr number"
+                                          sortBy="#{order.customer.billingAddress.number}">
+                                    <h:outputText value="#{order.customer.billingAddress.number}"/>
+                                </p:column>
+                                <p:column headerText="Delivery addr zip code"
+                                          sortBy="#{order.customer.deliveryAddress.zipCode}">
+                                    <h:outputText value="#{order.customer.deliveryAddress.zipCode}"/>
+                                </p:column>
+                                <p:column headerText="Delivery addr city"
+                                          sortBy="#{order.customer.deliveryAddress.city}">
+                                    <h:outputText value="#{order.customer.deliveryAddress.city}"/>
+                                </p:column>
+                                <p:column headerText="Delivery addr street"
+                                          sortBy="#{order.customer.deliveryAddress.street}">
+                                    <h:outputText value="#{order.customer.deliveryAddress.street}"/>
+                                </p:column>
+                                <p:column headerText="Delivery addr number"
+                                          sortBy="#{order.customer.deliveryAddress.number}">
+                                    <h:outputText value="#{order.customer.deliveryAddress.number}"/>
+                                </p:column>
+                                <p:column headerText="Products">
+                                    <h:dataTable id="op" var="prod" value="#{order.products}" reflow="true"
+                                                 tableStyle="width:auto">
+                                        <p:column headerText="Name">
+                                            <h:outputText id="pr" value="#{prod.name}"/>
+                                        </p:column>
+                                        <p:column headerText="Number">
+                                            <h:outputText id="pn" value="#{prod.number}"/>
+                                        </p:column>
+                                    </h:dataTable>
+                                </p:column>
+                            </p:dataTable>
+                        </h:panelGroup>
+                    </h:form>
+                </p:tab>
             </p:tabView>
         </p:panel>
     </ui:define>
