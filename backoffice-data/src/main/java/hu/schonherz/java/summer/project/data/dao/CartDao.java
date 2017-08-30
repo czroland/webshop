@@ -10,6 +10,7 @@ import java.util.List;
 public interface CartDao extends JpaRepository<CartEntity, Long> {
 
     CartEntity findById(Long id);
+    List<CartEntity> findAll();
 
 
 }
