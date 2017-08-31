@@ -19,12 +19,15 @@
     <script src="script/init.js"></script>
     <script src="script/routing.js"></script>
     <script src="script/apiService.js"></script>
+    <script src="script/cartService.js"></script>
+    <script src="script/userService.js"></script>
     <script src="script/headerController.js"></script>
     <script src="script/mainController.js"></script>
     <script src="script/profileController.js"></script>
     <script src="script/loginController.js"></script>
     <script src="script/registrationController.js"></script>
     <script src="script/offerDetailsController.js"></script>
+    <script src="script/cartController.js"></script>
     <script src="script/imageModalDirective.js"></script>
     <script src="script/carouselModalDirective.js"></script>
 </head>
@@ -44,14 +47,14 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li ng-show="!loggedUser.authenticated"><a href="#/signup"><i class="glyphicon glyphicon-user"></i> Sign Up</a>
+                    <li ng-show="!loggedInUser.authenticated"><a href="#/signup"><i class="glyphicon glyphicon-user"></i> Sign Up</a>
                     </li>
-                    <li ng-show="!loggedUser.authenticated"><a href="#/login"><i class="glyphicon glyphicon-log-in"></i> Log In</a>
+                    <li ng-show="!loggedInUser.authenticated"><a href="#/login"><i class="glyphicon glyphicon-log-in"></i> Log In</a>
                     </li>
-                    <li ng-show="loggedUser.authenticated"><a href="#/profile"><i class="glyphicon glyphicon-edit"></i> My
-                        profile ({{loggedUser.user.userName}})</a></li>
-                    <li><a href="/#"><i class="glyphicon glyphicon-shopping-cart"></i> Cart</a></li>
-                    <li ng-show="loggedUser.authenticated" ng-click="logout()"><a href="/#"><i
+                    <li ng-show="loggedInUser.authenticated"><a href="#/profile"><i class="glyphicon glyphicon-edit"></i> My
+                        profile ({{loggedInUser.user.userName}})</a></li>
+                    <li><a href="#/cart"><i class="glyphicon glyphicon-shopping-cart"></i> Cart ({{loggedInUser.user.cart.items.length}})</a></li>
+                    <li ng-show="loggedInUser.authenticated" ng-click="logout()"><a href="/#"><i
                         class="glyphicon glyphicon-log-out"></i> Logout</a></li>
                 </ul>
             </div>

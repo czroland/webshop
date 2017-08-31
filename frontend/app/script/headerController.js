@@ -3,29 +3,20 @@
         .module('webshopModule')
         .controller('headerController', Controller);
 
-    function Controller($scope) {
+    function Controller($scope, userService) {
         $scope.logout = function () {
-            localStorage.removeItem('loggedUser');
-            sessionStorage.removeItem('loggedUser');
-            getLoggedUser();
+            localStorage.removeItem('loggedInUser');
+            sessionStorage.removeItem('loggedInUser');
+            getLoggedInUser();
         };
 
-        $scope.$on('loginStateChange', getLoggedUser);
-        getLoggedUser();
+        $scope.$on('loginStateChange', getLoggedInUser);
+        $scope.$on('cartChanged', getLoggedInUser);
+        getLoggedInUser();
 
-        function getLoggedUser() {
-            if (localStorage.getItem('loggedUser')) {
-                $scope.loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
-            }
-            else if (sessionStorage.getItem('loggedUser')) {
-                $scope.loggedUser = JSON.parse(sessionStorage.getItem('loggedUser'));
-            }
-            else {
-                $scope.loggedUser = {
-                    token: undefined,
-                    authenticated: false
-                };
-            }
+        function getLoggedInUser() {
+            $scope.loggedInUser = userService.getLoggedInUser();
         }
+
     }
 })();

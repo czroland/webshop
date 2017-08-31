@@ -3,7 +3,11 @@
         .module('webshopModule')
         .controller('mainController', Controller);
 
-    function Controller($scope, api) {
+    function Controller($scope, api, cartService) {
+        $scope.addToCart = function (offer) {
+            cartService.addToCart(offer);
+        };
+
         $scope.getOffers = function () {
             api.getOffers()
                 .then(function (response) {
@@ -19,7 +23,7 @@
         $scope.selectedOption = $scope.sortByOptions[0];
 
         function disableButtons () {
-            $scope.disableButtons = (!!localStorage.getItem('loggedUser') || !!sessionStorage.getItem('loggedUser')) ? false : true;
+            $scope.disableButtons = (!!localStorage.getItem('loggedInUser') || !!sessionStorage.getItem('loggedInUser')) ? false : true;
         }
 
         $scope.getOffers();

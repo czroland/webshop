@@ -11,9 +11,9 @@
             }, $scope.remember)
                 .then(function (response) {
                     if ($scope.remember) {
-                        localStorage.setItem('loggedUser', JSON.stringify(response.data));
+                        localStorage.setItem('loggedInUser', JSON.stringify(response.data));
                     } else {
-                        sessionStorage.setItem('loggedUser', JSON.stringify(response.data));
+                        sessionStorage.setItem('loggedInUser', JSON.stringify(response.data));
                     }
                     $rootScope.$broadcast('loginStateChange');
                     $location.path('/');

@@ -18,6 +18,10 @@
                 .when('/profile', {
                     templateUrl: 'templates/userProfile.html'
                 })
+                .when('/cart', {
+                    templateUrl: 'templates/cart.html',
+                    controller: 'cartController'
+                })
                 .when('/offer/:id', {
                     templateUrl: "templates/offerDetails.html",
                     controller: "offerDetailsController"

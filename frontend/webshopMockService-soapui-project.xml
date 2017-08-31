@@ -668,6 +668,7 @@ if( requestBody.contains("some data") )
 	"token": "sdiufh784z82hdiuhg837zt8dhjshdf283z98jvbxmvb2398",
 	"authenticated": true,
 	"user": {
+		"id": 1,
 		"role": "COSTUMER",
 		"userName": "User",
 		"fullName": "User User",
@@ -685,6 +686,9 @@ if( requestBody.contains("some data") )
 			"settlement": "No-man's Land",
 			"street": "Somewhere st.",
 			"houseNumber": 22
+		},
+		"cart": {
+			"items": []
 		}	
 	}	
 }</con:responseContent><con:header><con:name>Access-Control-Allow-Origin</con:name><con:value>*</con:value></con:header><con:header><con:name>status</con:name><con:value>login</con:value></con:header></con:response></con:restMockAction></con:restMockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

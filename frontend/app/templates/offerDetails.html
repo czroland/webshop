@@ -23,7 +23,7 @@
     </div>
     <div class="col-md-12 offer-price">
         <h2>Price: {{offer.price | currency}}</h2>
-        <button class="btn btn-lg btn-default" ng-disabled="disableButton">
+        <button class="btn btn-lg btn-default" ng-disabled="disableButton" ng-click="addToCart(offer)">
             <i class="glyphicon glyphicon-shopping-cart"></i>
         </button>
         <div class="button-tooltip button-tooltip-big" ng-if="disableButton">
