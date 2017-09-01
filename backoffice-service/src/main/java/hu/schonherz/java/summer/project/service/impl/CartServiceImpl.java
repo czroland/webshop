@@ -25,7 +25,6 @@ public class CartServiceImpl extends AbstractEntityVoMapper implements CartServi
     @Override
     public void saveCart(CartVo cartVo) {
         cartRepository.save(map(cartVo, CartEntity.class));
-
     }
 
     @Override
@@ -42,7 +41,7 @@ public class CartServiceImpl extends AbstractEntityVoMapper implements CartServi
     public void removeCart(CartVo cartVo) {
 
         List<ProductVo> emptyProductList = new ArrayList<>();
-        cartVo.setProductVos(emptyProductList);
+        cartVo.setProducts(emptyProductList);
         cartRepository.save(map(cartVo,CartEntity.class));
 
     }
