@@ -4,6 +4,7 @@ import com.sun.jersey.api.NotFoundException;
 import hu.schonherz.java.summer.project.service.api.service.AccessTokenService;
 import hu.schonherz.java.summer.project.service.api.service.CustomerService;
 import hu.schonherz.java.summer.project.service.api.service.OrderService;
+import hu.schonherz.java.summer.project.service.api.service.user.UserService;
 import hu.schonherz.java.summer.project.service.api.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,6 +22,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -29,6 +31,9 @@ public class UserServiceRest {
 
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private OrderService orderService;
@@ -70,10 +75,21 @@ public class UserServiceRest {
         return customerService.getCustomerByName(userDetails.getUsername());
     }
 
-    @Path("edit-user")
+    @Path("add-user")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addUser(CustomerVo customer, @Context UriInfo uriInfo) {
+
+        for (UserVo c : userService.findAll()) {
+            if (c.getUsername().equals(customer.getUser().getUsername())) {
+                return Response.status(Response.Status.NOT_ACCEPTABLE.getStatusCode())
+                    .header(
+                        "Location",
+                        String.format("%s/%s", uriInfo.getAbsolutePath().toString(),
+                            customer.getId())).build();
+            }
+        }
+
         PasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
         customer.getUser()
@@ -84,6 +100,20 @@ public class UserServiceRest {
         customerService.saveCustomer(customer);
 
         return Response.status(Response.Status.CREATED.getStatusCode())
+            .header(
+                "Location",
+                String.format("%s/%s", uriInfo.getAbsolutePath().toString(),
+                    customer.getId())).build();
+    }
+
+    @Path("edit-user")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response editUser(CustomerVo customer, @Context UriInfo uriInfo) {
+
+        customerService.saveCustomer(customer);
+
+        return Response.status(Response.Status.ACCEPTED.getStatusCode())
             .header(
                 "Location",
                 String.format("%s/%s", uriInfo.getAbsolutePath().toString(),
