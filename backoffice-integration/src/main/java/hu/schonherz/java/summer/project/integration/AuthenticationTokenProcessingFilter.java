@@ -29,6 +29,7 @@ public class AuthenticationTokenProcessingFilter extends GenericFilterBean {
         HttpServletRequest httpRequest = this.getAsHttpRequest(servletRequest);
 
         ((HttpServletResponse) servletResponse).addHeader("Access-Control-Allow-Origin", "*");
+        ((HttpServletResponse) servletResponse).addHeader("Access-Control-Allow-Headers", "origin, content-type");
 
         String accessToken = this.extractAccessTokenFromRequest(httpRequest);
         if (accessToken != null) {
