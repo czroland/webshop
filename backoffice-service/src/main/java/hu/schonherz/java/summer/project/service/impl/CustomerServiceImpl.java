@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional(propagation = Propagation.REQUIRED)
+@Transactional()
 public class CustomerServiceImpl extends AbstractEntityVoMapper implements CustomerService {
 
     @Autowired
@@ -70,5 +70,17 @@ public class CustomerServiceImpl extends AbstractEntityVoMapper implements Custo
     @Override
     public List<CustomerVo> getAllCustomers() {
         return map(customerRepository.findAll(), CustomerVo.class);
+    }
+
+    @Override
+    public void editCustomer(Long id, String name, String fullName, String phone, String email) {
+        CustomerEntity customer = customerRepository.findById(id);
+        if (customer != null) {
+            customer.getUser().setUsername(name);
+            customer.getUser().setFullName(fullName);
+            customer.getUser().setPhone(phone);
+            customer.getUser().setEmail(email);
+            customerRepository.saveAndFlush(customer);
+        }
     }
 }

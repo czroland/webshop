@@ -1,11 +1,10 @@
 package hu.schonherz.java.summer.project.service.api.vo;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class CustomerVo extends BaseVo {
 

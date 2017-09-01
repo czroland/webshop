@@ -2,6 +2,7 @@ package hu.schonherz.java.summer.project.service.api.vo;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,6 +16,7 @@ public class OrderVo extends BaseVo {
 
     private Double price;
 
+    @JsonIgnore
     private CustomerVo customer;
 
     private List<ProductVo> products;
@@ -27,4 +29,3 @@ public class OrderVo extends BaseVo {
 
     private Date successDate;
 }
-

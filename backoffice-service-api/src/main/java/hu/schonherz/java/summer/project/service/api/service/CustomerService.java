@@ -17,4 +17,6 @@ public interface CustomerService {
 
     List<CustomerVo> getAllCustomers();
 
+    void editCustomer(Long id, String name, String fullName, String phone, String email);
+
 }

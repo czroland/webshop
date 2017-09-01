@@ -1,6 +1,7 @@
 package hu.schonherz.java.summer.project.data.entities;
 
 import lombok.*;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -21,6 +22,7 @@ public class OrderEntity extends BaseEntity {
     @Column(nullable = false)
     private Double price;
 
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
     private CustomerEntity customer;
