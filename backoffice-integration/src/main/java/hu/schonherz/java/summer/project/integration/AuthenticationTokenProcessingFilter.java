@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
@@ -26,6 +27,8 @@ public class AuthenticationTokenProcessingFilter extends GenericFilterBean {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpRequest = this.getAsHttpRequest(servletRequest);
+
+        ((HttpServletResponse) servletResponse).addHeader("Access-Control-Allow-Origin", "*");
 
         String accessToken = this.extractAccessTokenFromRequest(httpRequest);
         if (accessToken != null) {
