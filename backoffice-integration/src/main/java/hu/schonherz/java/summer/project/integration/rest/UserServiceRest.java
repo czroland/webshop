@@ -1,6 +1,8 @@
 package hu.schonherz.java.summer.project.integration.rest;
 
 import com.sun.jersey.api.NotFoundException;
+import hu.schonherz.java.summer.project.integration.Vo.CustomerChange;
+import hu.schonherz.java.summer.project.integration.Vo.LoginVo;
 import hu.schonherz.java.summer.project.service.api.service.AccessTokenService;
 import hu.schonherz.java.summer.project.service.api.service.CustomerService;
 import hu.schonherz.java.summer.project.service.api.service.OrderService;
@@ -48,9 +50,10 @@ public class UserServiceRest {
     @Path("authenticate")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public AccessTokenVo authenticate(@FormParam("username") String username, @FormParam("password") String password) {
+    @Consumes(MediaType.APPLICATION_JSON)
+    public AccessTokenVo authenticate(LoginVo loginVo) {
         UsernamePasswordAuthenticationToken authenticationToken =
-            new UsernamePasswordAuthenticationToken(username, password);
+            new UsernamePasswordAuthenticationToken(loginVo.getUsername(), loginVo.getPassword());
         Authentication authentication = this.authManager.authenticate(authenticationToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
@@ -59,7 +62,7 @@ public class UserServiceRest {
             throw new WebApplicationException(Response.Status.UNAUTHORIZED);
         }
 
-        return accessTokenService.createAccessToken((customerService.getCustomerByName(username)));
+        return accessTokenService.createAccessToken((customerService.getCustomerByName(loginVo.getUsername())));
     }
 
     @GET
@@ -107,17 +110,11 @@ public class UserServiceRest {
     }
 
     @Path("edit-user")
-    @POST
+    @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response editUser(CustomerVo customer, @Context UriInfo uriInfo) {
+    public void editUser(CustomerChange customer, @Context UriInfo uriInfo) {
 
-        customerService.saveCustomer(customer);
-
-        return Response.status(Response.Status.ACCEPTED.getStatusCode())
-            .header(
-                "Location",
-                String.format("%s/%s", uriInfo.getAbsolutePath().toString(),
-                    customer.getId())).build();
+        customerService.editCustomer(-1L, customer.getUserName(), customer.getFullName(), customer.getPhone(), customer.getEmail());
     }
 
     @Path("orders")
