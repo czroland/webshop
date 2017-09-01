@@ -2,11 +2,11 @@ package hu.schonherz.java.summer.project.service.api.vo;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-@NoArgsConstructor
 public class CustomerVo extends BaseVo {
 
     private UserVo user;
@@ -15,7 +15,8 @@ public class CustomerVo extends BaseVo {
 
     private AddressVo deliveryAddress;
 
+    private CartVo cart;
+
     private String role;
 
-    private CartVo cartVo;
 }

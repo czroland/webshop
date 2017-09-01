@@ -14,10 +14,6 @@ import java.util.List;
 @Table(name = "carts")
 public class CartEntity extends BaseEntity {
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id")
-    private CustomerEntity customers;
-
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private List<ProductEntity> products;
 

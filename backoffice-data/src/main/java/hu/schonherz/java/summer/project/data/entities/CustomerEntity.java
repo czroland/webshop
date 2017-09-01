@@ -1,3 +1,4 @@
+
 package hu.schonherz.java.summer.project.data.entities;
 
 import lombok.*;
@@ -27,7 +28,7 @@ public class CustomerEntity extends BaseEntity {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cart_id")
-    private CartEntity cartEntity;
+    private CartEntity cart;
 
     //TODO:refactor, using isAuthenticated() instead of role
     private String role;

@@ -4,6 +4,7 @@ import hu.schonherz.java.summer.project.data.dao.OrderDao;
 import hu.schonherz.java.summer.project.data.entities.OrderEntity;
 import hu.schonherz.java.summer.project.service.api.service.OrderService;
 import hu.schonherz.java.summer.project.service.api.vo.OrderVo;
+import hu.schonherz.java.summer.project.service.api.vo.ProductVo;
 import hu.schonherz.java.summer.project.service.mapper.AbstractEntityVoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,11 @@ public class OrderServiceImpl extends AbstractEntityVoMapper implements OrderSer
 
     @Override
     public void saveOrder(OrderVo order) {
+        Double price = 0.0;
+        for (ProductVo p : order.getProducts()) {
+            price += p.getPrice();
+        }
+        order.setPrice(price);
         orderRepository.save(map(order, OrderEntity.class));
     }
 
@@ -42,5 +48,10 @@ public class OrderServiceImpl extends AbstractEntityVoMapper implements OrderSer
     @Override
     public OrderVo getOrderByPrice(Double price) {
         return map(orderRepository.findByPrice(price), OrderVo.class);
+    }
+
+    @Override
+    public List<OrderVo> getByCustomerId(Long id) {
+        return map(orderRepository.findByCustomerId(id), OrderVo.class);
     }
 }

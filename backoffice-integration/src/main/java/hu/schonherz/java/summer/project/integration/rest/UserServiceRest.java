@@ -1,11 +1,10 @@
 package hu.schonherz.java.summer.project.integration.rest;
 
+import com.sun.jersey.api.NotFoundException;
 import hu.schonherz.java.summer.project.service.api.service.AccessTokenService;
 import hu.schonherz.java.summer.project.service.api.service.CustomerService;
-import hu.schonherz.java.summer.project.service.api.vo.AccessTokenVo;
-import hu.schonherz.java.summer.project.service.api.vo.CustomerVo;
-import hu.schonherz.java.summer.project.service.api.vo.UserVo;
-import hu.schonherz.java.summer.project.service.impl.user.UserServiceBean;
+import hu.schonherz.java.summer.project.service.api.service.OrderService;
+import hu.schonherz.java.summer.project.service.api.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,6 +12,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.*;
@@ -20,6 +21,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import java.util.List;
 
 @Component
 @Path("/user")
@@ -27,6 +29,9 @@ public class UserServiceRest {
 
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private OrderService orderService;
 
     @Autowired
     private AccessTokenService accessTokenService;
@@ -65,9 +70,16 @@ public class UserServiceRest {
         return customerService.getCustomerByName(userDetails.getUsername());
     }
 
+    @Path("edit-user")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addUser(CustomerVo customer, @Context UriInfo uriInfo) {
+        PasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+
+        customer.getUser()
+            .setPassword(bCryptPasswordEncoder.encode(customer
+                .getUser()
+                .getPassword()));
 
         customerService.saveCustomer(customer);
 
@@ -76,5 +88,33 @@ public class UserServiceRest {
                 "Location",
                 String.format("%s/%s", uriInfo.getAbsolutePath().toString(),
                     customer.getId())).build();
+    }
+
+    @Path("orders")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<OrderVo> getOrders() {
+        if (orderService.getByCustomerId(getUser().getId()).isEmpty()) {
+            throw new NotFoundException("No such subcategories.");
+        }
+        return orderService.getByCustomerId(getUser().getId());
+    }
+
+    @Path("place-order")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addOrder(@Context UriInfo uriInfo) {
+
+        OrderVo order = new OrderVo();
+        order.setCustomer(getUser());
+        order.setProducts(getUser().getCart().getProducts());
+        order.getCustomer().getCart().setProducts(null);
+        orderService.saveOrder(order);
+
+        return Response.status(Response.Status.CREATED.getStatusCode())
+            .header(
+                "Location",
+                String.format("%s/%s", uriInfo.getAbsolutePath().toString(),
+                    order.getId())).build();
     }
 }

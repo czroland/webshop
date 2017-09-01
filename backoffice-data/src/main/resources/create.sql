@@ -9,7 +9,6 @@ INSERT INTO public.agents(id, user_id) VALUES (-2, -2);
 INSERT INTO public.roles(id, name) VALUES (1, 'ROLE_ADMIN');
 INSERT INTO public.roles(id, name) VALUES (2, 'ROLE_USER');
 INSERT INTO public.agents_roles(agententity_id, roles_id) VALUES (-1, 2);
-INSERT INTO public.customers(id, role, billing_address_id, delivery_address_id, user_id) VALUES (-1,'ROLE_USER', -1,-1,-1);
 
 INSERT INTO public.categories(id, name) VALUES (-1, 'gyumolcs');
 INSERT INTO public.categories(id, name) VALUES (-2, 'zoldseg');
@@ -23,6 +22,11 @@ INSERT INTO public.products(id,description, name, number, category_id, sub_categ
 
 INSERT INTO public.products_images(id,name,root,product_id) VALUES (-1,'image','root',-1);
 INSERT INTO public.products_images(id,name,root,product_id) VALUES (-2,'image2','root2',-2);
-
+INSERT INTO public.carts(id) VALUES (-1);
+INSERT INTO public.customers(id, role, billing_address_id, delivery_address_id, user_id, cart_id) VALUES (-1,'ROLE_USER', -1,-1,-1,-1);
+INSERT INTO public.carts_products(cartentity_id, products_id) VALUES (-1, -2);
 INSERT INTO public.orders(id, issuccess, price, senddate, customer_id) VALUES (-1, false, 5, '2050-05-09', -1);
 INSERT INTO public.orders_products(orderentity_id,products_id) VALUES (-1,-1);
+INSERT INTO public.customers_orders(customerentity_id, orders_id) VALUES (-1,-1);
+
+

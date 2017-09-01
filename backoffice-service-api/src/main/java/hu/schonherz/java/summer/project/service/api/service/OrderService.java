@@ -14,4 +14,7 @@ public interface OrderService {
     List<OrderVo> getAllOrders();
 
     OrderVo getOrderByPrice(Double price);
+
+    List<OrderVo> getByCustomerId(Long id);
+
 }

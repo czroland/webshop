@@ -12,6 +12,5 @@ import java.util.List;
 @NoArgsConstructor
 public class CartVo extends BaseVo {
 
-    private UserVo userVo;
-    private List<ProductVo> productVos;
+    private List<ProductVo> products;
 }

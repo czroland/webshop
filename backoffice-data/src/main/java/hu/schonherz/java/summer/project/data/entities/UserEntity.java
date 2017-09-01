@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Builder
 public class UserEntity extends BaseEntity {
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
 
     @Column(nullable = false)
