@@ -47,8 +47,12 @@ INSERT INTO public.products_images(id,name,root,product_id) VALUES (-2,'image2',
 INSERT INTO public.carts(id) VALUES (-1);
 INSERT INTO public.customers(id, role, billing_address_id, delivery_address_id, user_id, cart_id) VALUES (-1,'ROLE_USER', -1,-1,-1,-1);
 INSERT INTO public.carts_products(cartentity_id, products_id) VALUES (-1, -2);
+INSERT INTO public.carts_products(cartentity_id, products_id) VALUES (-1, -1);
+
 INSERT INTO public.orders(id, issuccess, price, senddate, customer_id) VALUES (-1, false, 5, '2050-05-09', -1);
 INSERT INTO public.orders_products(orderentity_id,products_id) VALUES (-1,-1);
+INSERT INTO public.orders_products(orderentity_id,products_id) VALUES (-1,-2);
+
 INSERT INTO public.customers_orders(customerentity_id, orders_id) VALUES (-1,-1);
 
 

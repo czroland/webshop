@@ -10,8 +10,7 @@ import javax.persistence.*;
 @ToString(callSuper = true)
 @Entity
 @Table(name = "customers")
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class CustomerEntity extends BaseEntity {
 
     @OneToOne(cascade = CascadeType.ALL)
