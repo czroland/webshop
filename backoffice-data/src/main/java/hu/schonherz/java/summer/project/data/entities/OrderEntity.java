@@ -2,6 +2,8 @@ package hu.schonherz.java.summer.project.data.entities;
 
 import lombok.*;
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -22,15 +24,14 @@ public class OrderEntity extends BaseEntity {
     @Column(nullable = false)
     private Double price;
 
-    @JsonIgnore
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "customer_id")
     private CustomerEntity customer;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch=FetchType.EAGER)
     private List<ProductEntity> products;
 
-    @Column(nullable=false)
+    @Column(nullable = false)
     private boolean isSuccess;
 
     @Column

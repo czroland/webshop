@@ -27,7 +27,7 @@ public class OrderServiceImpl extends AbstractEntityVoMapper implements OrderSer
             price += p.getPrice();
         }
         order.setPrice(price);
-        orderRepository.save(map(order, OrderEntity.class));
+        orderRepository.saveAndFlush(map(order, OrderEntity.class));
     }
 
     @Override
@@ -51,7 +51,7 @@ public class OrderServiceImpl extends AbstractEntityVoMapper implements OrderSer
     }
 
     @Override
-    public List<OrderVo> getByCustomerId(Long id) {
+    public List<OrderVo> getOrdersByCustomerId(Long id) {
         return map(orderRepository.findByCustomerId(id), OrderVo.class);
     }
 }

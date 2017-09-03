@@ -14,6 +14,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,7 +25,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -61,21 +61,19 @@ public class UserServiceRest {
         if (!(principal instanceof UserDetails)) {
             throw new WebApplicationException(Response.Status.UNAUTHORIZED);
         }
-
         return accessTokenService.createAccessToken((customerService.getCustomerByName(loginVo.getUsername())));
     }
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public CustomerVo getUser() {
+    private CustomerVo getUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Object principal = authentication.getPrincipal();
-        if (!(principal instanceof UserDetails)) {
+        CustomerVo customer = (CustomerVo) principal;
+
+        if (!(principal instanceof CustomerVo)) {
+
             throw new WebApplicationException(Response.Status.UNAUTHORIZED);
         }
-        UserDetails userDetails = (UserDetails) principal;
-
-        return customerService.getCustomerByName(userDetails.getUsername());
+        return customer;
     }
 
     @Path("add-user")
@@ -121,10 +119,11 @@ public class UserServiceRest {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<OrderVo> getOrders() {
-        if (orderService.getByCustomerId(getUser().getId()).isEmpty()) {
-            throw new NotFoundException("No such subcategories.");
+        if (orderService.getOrdersByCustomerId(getUser().getId()).isEmpty()) {
+            throw new NotFoundException("No such orders.");
         }
-        return orderService.getByCustomerId(getUser().getId());
+
+        return orderService.getOrdersByCustomerId(getUser().getId());
     }
 
     @Path("place-order")
