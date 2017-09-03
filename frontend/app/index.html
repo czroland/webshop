@@ -47,14 +47,14 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li ng-show="!loggedInUser.authenticated"><a href="#/signup"><i class="glyphicon glyphicon-user"></i> Sign Up</a>
+                    <li ng-show="!loggedInUser.token"><a href="#/signup"><i class="glyphicon glyphicon-user"></i> Sign Up</a>
                     </li>
-                    <li ng-show="!loggedInUser.authenticated"><a href="#/login"><i class="glyphicon glyphicon-log-in"></i> Log In</a>
+                    <li ng-show="!loggedInUser.token"><a href="#/login"><i class="glyphicon glyphicon-log-in"></i> Log In</a>
                     </li>
-                    <li ng-show="loggedInUser.authenticated"><a href="#/profile"><i class="glyphicon glyphicon-edit"></i> My
-                        profile ({{loggedInUser.user.userName}})</a></li>
-                    <li><a href="#/cart"><i class="glyphicon glyphicon-shopping-cart"></i> Cart ({{loggedInUser.user.cart.items.length}})</a></li>
-                    <li ng-show="loggedInUser.authenticated" ng-click="logout()"><a href="/#"><i
+                    <li ng-show="loggedInUser.token"><a href="#/profile"><i class="glyphicon glyphicon-edit"></i> My
+                        profile ({{loggedInUser.customer.user.username}})</a></li>
+                    <li><a href="#/cart"><i class="glyphicon glyphicon-shopping-cart"></i> Cart ({{loggedInUser.customer.cart.products.length}})</a></li>
+                    <li ng-show="loggedInUser.token" ng-click="logout()"><a href="/#"><i
                         class="glyphicon glyphicon-log-out"></i> Logout</a></li>
                 </ul>
             </div>

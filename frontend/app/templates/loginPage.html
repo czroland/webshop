@@ -5,14 +5,14 @@
     <form class="login-body form-group"
           name="loginForm"
           id="loginForm"
-          ng-submit="login()">
+          ng-submit="login(user)">
         <label for="username">Username</label>
         <div class="login-input">
             <input class="form-control"
                    type="text"
                    name="username"
                    id="username"
-                   ng-model="username"
+                   ng-model="user.username"
                    placeholder="Username"
                    autofocus
                    required />
@@ -24,10 +24,13 @@
                    type="password"
                    name="password"
                    id="password"
-                   ng-model="password"
+                   ng-model="user.password"
                    placeholder="Password"
                    required />
             <i class="glyphicon glyphicon-lock"></i>
+        </div>
+        <div class="alert alert-danger" ng-if="failedLogin">
+            <p><strong>Bad e-mail</strong> or <strong>password</strong>! Please try again!</p>
         </div>
         <label><input type="checkbox" ng-model="remember" /> Keep me logged in</label>
         <button type="submit"

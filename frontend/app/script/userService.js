@@ -9,10 +9,9 @@
         function getLoggedInUser() {
             var loggedInUser = {
                 token: undefined,
-                authenticated: false,
-                user: {
+                customer: {
                     cart: {
-                        items: []
+                        products: []
                     }
                 }
             };
