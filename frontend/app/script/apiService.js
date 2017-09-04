@@ -8,7 +8,7 @@
         this.getCategories = getCategories;
         this.getProducts = getProducts;
         this.login = login;
-        this.postCustomer = postCustomer;
+        this.registration = registration;
 
         function getCategories() {
             return $http.get(urlBase + "/backoffice-integration/rest/categories");
@@ -22,7 +22,7 @@
             return $http.post(urlBase + "/backoffice-integration/rest/user/authenticate", user);
         }
 
-        function postCustomer(customer) {
+        function registration(customer) {
             return $http.post(urlBase + "/rest/user/add-user", customer);
         }
     }
