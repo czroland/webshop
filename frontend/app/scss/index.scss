@@ -90,28 +90,33 @@ body {
     }
 }
 
-.offers {
+.products {
     padding: 0;
-    .offer {
+    .product {
         padding: 0 1rem;
-        .offer-body {
+        .product-body {
             padding: 0 1rem 5.5rem;
             position: relative;
             .caption {
                 height: 10rem;
+                p {
+                    font-size: 1.25em;
+                }
             }
-            .products {
-                height: 15rem;
+            figure {
+                height: 22.5rem;
+                margin-bottom: 1rem;
                 overflow-y: hidden;
+                text-align: center;
+                img {
+                    width: 90%;
+                }
+            }
+            .description {
+                height: 13rem;
                 padding: 0 1rem;
-                position: relative;
-                .smoothy-box {
-                    background: linear-gradient(transparent, white);
-                    bottom: 0;
-                    height: 1rem;
-                    left: 0;
-                    position: absolute;
-                    width: 100%;
+                p:first-child {
+                    font-weight: bold;
                 }
             }
             .details {
@@ -129,6 +134,69 @@ body {
                 }
             }
         }
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .products {
+        .product {
+            .product-body {
+                .caption {
+                    height: 12.5rem;
+                }
+                figure {
+                    height: 17.5rem;
+                }
+                .description {
+                    height: 17.5rem;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .products {
+        .product {
+            .product-body {
+                .caption {
+                    height: 10rem;
+                }
+                figure {
+                    height: 30rem;
+                }
+                .description {
+                    height: 12.5rem;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .products {
+        .product {
+            .product-body {
+                .caption {
+                    height: auto;
+                }
+                figure {
+                    height: auto;
+                    img {
+                        width: 60%;
+                    }
+                }
+                .description {
+                    height: auto;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .products .product .product-body figure img {
+        width: 90%;
     }
 }
 
@@ -304,7 +372,9 @@ footer {
     margin: 20px;
 
     input.ng-invalid {
-        border: 2px solid red;
+        border: 1px solid red;
+        box-shadow: 0 0 5px red;
+        transition: .5s;
     }
 
     .warn {

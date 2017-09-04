@@ -59,29 +59,27 @@
                 </div>
             </div>
 
-            <div class="offers col-md-12">
-                <div class="offer col-md-4 col-sm-6 col-xs-12"
-                     ng-repeat="offer in offers | filter: {name: search} | orderBy: selectedOption.value : reverse">
-                    <div class="offer-body thumbnail">
+            <div class="products col-md-12">
+                <div class="product col-md-4 col-sm-6 col-xs-12"
+                     ng-repeat="product in products | filter: {name: search} | orderBy: selectedOption.value : reverse">
+                    <div class="product-body thumbnail">
                         <div class="caption">
-                            <h4><a href="#/offer/{{offer.id}}">{{offer.name | uppercase}}</a></h4>
-                            <h4>{{offer.price | currency}}</h4>
+                            <p><a href="#/product/{{product.id}}">{{product.name | uppercase | limitTo : 30}}{{product.name.length > 30 ? '...' : ''}}</a></p>
+                            <p>{{product.price | currency}}</p>
                         </div>
-                        <div class="products">
-                            <h4>Products:</h4>
-                            <ul>
-                                <li ng-repeat="product in offer.products">
-                                    <h5>{{product.quantity}}x {{product.name}}</h5>
-                                </li>
-                            </ul>
-                            <div class="smoothy-box"></div>
+                        <figure>
+                            <img ng-src="{{product.images[0].root}}" alt="{{product.images[0].name}}" />
+                        </figure>
+                        <div class="description">
+                            <p>Description:</p>
+                            <p>{{product.description | limitTo : 150}}{{product.description.length > 150 ? '...' : ''}}</p>
                         </div>
                         <div class="details">
-                            <a href="#/offer/{{offer.id}}">
+                            <a href="#/offer/{{product.id}}">
                                 <h5>Details...</h5>
                             </a>
                         </div>
-                        <button type="button" class="btn btn-default" ng-disabled="disableButtons" ng-click="addToCart(offer)">
+                        <button type="button" class="btn btn-default" ng-disabled="disableButtons" ng-click="addToCart(product)">
                             <i class="glyphicon glyphicon-shopping-cart"></i>
                         </button>
                         <div class="button-tooltip button-tooltip-small" ng-if="disableButtons">

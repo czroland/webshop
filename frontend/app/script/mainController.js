@@ -8,11 +8,12 @@
             cartService.addToCart(offer);
         };
 
-        $scope.getOffers = function () {
-            api.getOffers()
+        $scope.getProducts = function () {
+            api.getProducts()
                 .then(function (response) {
-                    $scope.offers = response.data.offers;
-                });
+                    $scope.products = response.data;
+                    console.log($scope.products);
+            });
         };
 
         $scope.sortByOptions = [
@@ -26,7 +27,7 @@
             $scope.disableButtons = (!!localStorage.getItem('loggedInUser') || !!sessionStorage.getItem('loggedInUser')) ? false : true;
         }
 
-        $scope.getOffers();
+        $scope.getProducts();
         disableButtons();
 
     }
