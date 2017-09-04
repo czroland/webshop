@@ -3,9 +3,7 @@ package hu.schonherz.java.summer.project.integration.rest;
 import com.sun.jersey.api.NotFoundException;
 import hu.schonherz.java.summer.project.integration.Vo.CustomerChange;
 import hu.schonherz.java.summer.project.integration.Vo.LoginVo;
-import hu.schonherz.java.summer.project.service.api.service.AccessTokenService;
-import hu.schonherz.java.summer.project.service.api.service.CustomerService;
-import hu.schonherz.java.summer.project.service.api.service.OrderService;
+import hu.schonherz.java.summer.project.service.api.service.*;
 import hu.schonherz.java.summer.project.service.api.service.user.UserService;
 import hu.schonherz.java.summer.project.service.api.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +23,10 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @Path("/user")
@@ -35,7 +36,13 @@ public class UserServiceRest {
     private CustomerService customerService;
 
     @Autowired
+    private ProductService productService;
+
+    @Autowired
     private UserService userService;
+
+    @Autowired
+    private CartService cartService;
 
     @Autowired
     private OrderService orderService;
@@ -97,7 +104,7 @@ public class UserServiceRest {
             .setPassword(bCryptPasswordEncoder.encode(customer
                 .getUser()
                 .getPassword()));
-
+        customer.setCart(new CartVo());
         customerService.saveCustomer(customer);
 
         return Response.status(Response.Status.CREATED.getStatusCode())
@@ -111,8 +118,7 @@ public class UserServiceRest {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public void editUser(CustomerChange customer, @Context UriInfo uriInfo) {
-
-        customerService.editCustomer(-1L, customer.getUserName(), customer.getFullName(), customer.getPhone(), customer.getEmail());
+        customerService.editCustomer(getUser().getId(), customer.getUserName(), customer.getFullName(), customer.getPhone(), customer.getEmail());
     }
 
     @Path("orders")
@@ -126,6 +132,14 @@ public class UserServiceRest {
         return orderService.getOrdersByCustomerId(getUser().getId());
     }
 
+    @Path("cart")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public CartVo getCart() {
+
+        return getUser().getCart();
+    }
+
     @Path("place-order")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
@@ -134,13 +148,41 @@ public class UserServiceRest {
         OrderVo order = new OrderVo();
         order.setCustomer(getUser());
         order.setProducts(getUser().getCart().getProducts());
-        order.getCustomer().getCart().setProducts(null);
         orderService.saveOrder(order);
-
+        getUser().getCart().getProducts().clear();
+        customerService.saveCustomer(getUser());
         return Response.status(Response.Status.CREATED.getStatusCode())
             .header(
                 "Location",
                 String.format("%s/%s", uriInfo.getAbsolutePath().toString(),
                     order.getId())).build();
+    }
+
+    @Path("add-product")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addProductToCart(ProductVo productVo, @Context UriInfo uriInfo) {
+        getUser().getCart().getProducts().add(productService.getProductByNumber(productVo.getNumber()));
+        customerService.saveCustomer(getUser());
+
+        return Response.status(Response.Status.CREATED.getStatusCode())
+            .header(
+                "Location",
+                String.format("%s/%s", uriInfo.getAbsolutePath().toString(),
+                    productVo.getNumber())).build();
+    }
+
+    @Path("remove-product")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response removeProductFromCart(ProductVo productVo, @Context UriInfo uriInfo) {
+
+        getUser().getCart().getProducts().remove(productService.getProductByNumber(productVo.getNumber()));
+        customerService.saveCustomer(getUser());
+        return Response.status(Response.Status.CREATED.getStatusCode())
+            .header(
+                "Location",
+                String.format("%s/%s", uriInfo.getAbsolutePath().toString(),
+                    productVo.getNumber())).build();
     }
 }

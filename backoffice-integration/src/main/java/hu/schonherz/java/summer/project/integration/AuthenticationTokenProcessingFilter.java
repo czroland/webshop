@@ -57,8 +57,7 @@ public class AuthenticationTokenProcessingFilter extends GenericFilterBean {
     private String extractAccessTokenFromRequest(HttpServletRequest httpRequest) {
         /* Get token from header */
         String authToken = httpRequest.getHeader("X-Access-Token");
-
-		/* If token not found get it from request parameter */
+        /* If token not found get it from request parameter */
         if (authToken == null) {
             authToken = httpRequest.getParameter("token");
         }

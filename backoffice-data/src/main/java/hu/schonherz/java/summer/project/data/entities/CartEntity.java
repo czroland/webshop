@@ -14,7 +14,7 @@ import java.util.List;
 @Table(name = "carts")
 public class CartEntity extends BaseEntity {
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<ProductEntity> products;
 
 }

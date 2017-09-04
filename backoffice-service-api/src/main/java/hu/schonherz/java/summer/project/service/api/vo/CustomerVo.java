@@ -26,7 +26,6 @@ public class CustomerVo extends BaseVo {
         this.user = user;
     }
 
-    @JsonIgnore
     public AddressVo getBillingAddress() {
         return billingAddress;
     }
@@ -35,7 +34,6 @@ public class CustomerVo extends BaseVo {
         this.billingAddress = billingAddress;
     }
 
-    @JsonIgnore
     public AddressVo getDeliveryAddress() {
         return deliveryAddress;
     }

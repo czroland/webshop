@@ -11,7 +11,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 public class OrderVo extends BaseVo {
 
-    private Date sendDate;
+    private Date sendDate = new Date();
 
     private Double price;
 

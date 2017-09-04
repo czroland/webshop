@@ -22,13 +22,15 @@
                     <h:graphicImage library="images" name="logo.png" style="width: 100px" class="img-responsive"/>
                 </div>
                 <div class="col-xs-12 col-sm-11 col-md-7">
-                    <h6 class="welcome-text">Üdvözlünk a Backoffice oldalon</h6>
+                    <h6 class="welcome-text">Welcome at Backoffice</h6>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-4">
                     <h:form id="menuForm">
                         <p:growl id="messages" autoUpdate="true" showDetail="true"/>
                         <p:menubar>
-                            <p:menuitem value="Admin" icon="fa fa-th"/>
+                            <p:menuitem rendered="#{facesContext.externalContext.userPrincipal != null}"
+                                value="Admin" url="admin/admin.xhtml"
+                                        icon="fa fa-th"/>
                             <p:menuitem rendered="#{facesContext.externalContext.userPrincipal == null}"
                                         value="Login" url="/login.xhtml"
                                         icon="fa fa-spinner fa-pulse"/>
