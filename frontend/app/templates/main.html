@@ -64,7 +64,7 @@
                      ng-repeat="product in products | filter: {name: search} | orderBy: selectedOption.value : reverse">
                     <div class="product-body thumbnail">
                         <div class="caption">
-                            <p><a href="#/product/{{product.id}}">{{product.name | uppercase | limitTo : 30}}{{product.name.length > 30 ? '...' : ''}}</a></p>
+                            <p><a href="#/product/{{product.number}}">{{product.name | uppercase | limitTo : 30}}{{product.name.length > 30 ? '...' : ''}}</a></p>
                             <p>{{product.price | currency}}</p>
                         </div>
                         <figure>
@@ -75,7 +75,7 @@
                             <p>{{product.description | limitTo : 150}}{{product.description.length > 150 ? '...' : ''}}</p>
                         </div>
                         <div class="details">
-                            <a href="#/offer/{{product.id}}">
+                            <a href="#/product/{{product.number}}">
                                 <h5>Details...</h5>
                             </a>
                         </div>

@@ -22,9 +22,9 @@
                     templateUrl: 'templates/cart.html',
                     controller: 'cartController'
                 })
-                .when('/offer/:id', {
-                    templateUrl: "templates/offerDetails.html",
-                    controller: "offerDetailsController"
+                .when('/product/:number', {
+                    templateUrl: "templates/productDetails.html",
+                    controller: "productDetailsController"
                 });
         });
 })();

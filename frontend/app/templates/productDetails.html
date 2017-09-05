@@ -1,0 +1,55 @@
+<div class="container product-detail">
+    <div class="col-md-12 product-name">
+        <h2>{{product.name | uppercase}}</h2>
+    </div>
+    <!--div class="col-md-12 offer-products" ng-repeat="product in offer.products">
+        <div class="row offer-product" image-modal>
+            <h4 class="col-md-12">{{product.name}} ({{product.quantity}}x)</h4>
+            <div class="col-md-4 col-sm-4 col-xs-12 product-image">
+                <img class="col-md-12 col-sm-12 col-xs-12" ng-src="{{product.src}}" alt="product.name"/>
+            </div>
+            <div class="row col-md-8 col-sm-8 col-xs-12">
+                <div class="row" ng-repeat="(key, value) in product.description">
+                    <div class="col-md-2 col-sm-3 col-xs-4">
+                        <h5>{{key | uppercase}}</h5>
+                    </div>
+                    <div class="col-md-10 col-sm-9 col-xs-8">
+                        <p>{{value}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div-->
+    <div class="col-md-12 product" image-modal>
+        <div class="col-md-4 col-sm-4 col-xs-12 product-image">
+            <figure>
+                <img ng-src="{{product.images[0].root}}" alt="{{product.images[0].name}}" />
+            </figure>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+            <p>Category</p>
+            <p><span>{{product.category.name}} / </span><span>{{product.subCategory.name}}</span></p>
+            <p>Description:</p>
+            <p>{{product.description}}</p>
+        </div>
+    </div>
+    <div class="col-md-12 product-price">
+        <h2 class="col-md-6 col-sm-6 col-xs-6">Price: {{product.price | currency}}</h2>
+        <div class="col-md-6 col-sm-6 col-xs-6 text-right buttons">
+            <button class="btn btn-lg btn-default" ng-disabled="disableButton" ng-click="addToCart(product)">
+                <i class="glyphicon glyphicon-shopping-cart"></i>
+            </button>
+            <div class="button-tooltip button-tooltip-big" ng-if="disableButton">
+                <p>Please log in to purchase.</p>
+            </div>
+            <button title="Continue shopping" class="btn btn-lg btn-default" ng-click="backToMain()">
+                <i class="glyphicon glyphicon-share-alt"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="image-modal">
+    <span class="image-modal-close">x</span>
+    <img class="image-modal-content" />
+</div>

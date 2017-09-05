@@ -8,7 +8,6 @@
         $scope.login = function () {
             api.login($scope.user)
                 .then(function (response) {
-                    console.log(response.data);
                     if ($scope.remember) {
                         localStorage.setItem('loggedInUser', JSON.stringify(response.data));
                     } else {
