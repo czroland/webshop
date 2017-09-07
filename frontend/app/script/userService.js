@@ -7,7 +7,7 @@
         this.getLoggedInUser = getLoggedInUser;
 
         function getLoggedInUser() {
-            var loggedInUser = {
+            return JSON.parse(sessionStorage.getItem('loggedInUser')) || JSON.parse(localStorage.getItem('loggedInUser')) || {
                 token: undefined,
                 customer: {
                     cart: {
@@ -15,13 +15,6 @@
                     }
                 }
             };
-            if (!!localStorage.getItem('loggedInUser')) {
-                loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-            }
-            else if (!!sessionStorage.getItem('loggedInUser')) {
-                loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
-            }
-            return loggedInUser;
         }
     }
 })();
