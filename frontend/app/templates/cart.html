@@ -1,60 +1,62 @@
 <div class="container cart">
-    <div class="cart-warning" ng-if="!loggedInUser.user.cart.items.length">
+    <div class="cart-warning" ng-if="!loggedInUser.customer.cart.products.length">
         <div class="empty-cart-icon">
             <i class="glyphicon glyphicon-shopping-cart"></i>
             <i class="glyphicon glyphicon-remove"></i>
             <p class="warning" >Your shopping cart is empty!</p>
-            <p ng-if="!loggedInUser.authenticated">Please login to purchase.</p>
-            <p ng-if="!loggedInUser.authenticated">If you do not have an account please sign up.</p>
+            <p ng-if="!loggedInUser.token">Please login to purchase.</p>
+            <p ng-if="!loggedInUser.token">If you do not have an account please sign up.</p>
             <button class="btn btn-primary"
-                    ng-if="!loggedInUser.authenticated"
+                    ng-if="!loggedInUser.token"
                     ng-click="goToLogin()">
                 <i class="glyphicon glyphicon-log-in"></i> Log In
             </button>
             <button class="btn btn-primary"
-                    ng-if="!loggedInUser.authenticated"
+                    ng-if="!loggedInUser.token"
                     ng-click="goToSignup()">
                 <i class="glyphicon glyphicon-user"></i> Sign Up
             </button>
             <button class="btn btn-primary"
-                    ng-if="!loggedInUser.user.cart.items.length && loggedInUser.authenticated"
+                    ng-if="!loggedInUser.customer.cart.products.length && loggedInUser.token"
                     ng-click="continueShopping()">
                 <i class="glyphicon glyphicon-shopping-cart"></i> Continue Shopping
             </button>
         </div>
     </div>
-    <div class="cart-items" ng-if="loggedInUser.user.cart.items.length">
+    <div class="cart-items" ng-if="loggedInUser.customer.cart.products.length">
         <p>You are about to order the following items.</p>
         <table>
             <tr>
-                <th class="col-md-4 col-sm-4 col-xs-4">Name</th>
-                <th class="col-md-4 col-sm-4 col-xs-4">Products</th>
+                <th class="col-md-2 col-sm-2 col-xs-2"></th>
+                <th class="col-md-6 col-sm-6 col-xs-6">Name</th>
                 <th class="col-md-2 col-sm-2 col-xs-2">Quantity</th>
                 <th class="col-md-2 col-sm-2 col-xs-2">Price</th>
             </tr>
-            <tr ng-repeat="item in loggedInUser.user.cart.items">
-                <td class="col-md-4 col-sm-4 col-xs-4">{{item.name}}</td>
-                <td class="col-md-4 col-sm-4 col-xs-4">
-                    <ul>
-                        <li ng-repeat="product in item.products">{{product.name}}</li>
-                    </ul>
+            <tr ng-repeat="product in loggedInUser.customer.cart.products">
+                <td class="col-md-2 col-sm-2 col-xs-2">
+                    <figure>
+                        <img ng-src="{{product.images[0].root}}" alt="{{product.image[0].name}}" />
+                    </figure>
+                </td>
+                <td class="col-md-6 col-sm-6 col-xs-6">
+                    {{product.name}}
                 </td>
                 <td class="col-md-2 col-sm-2 col-xs-2">
                     <input type="number"
                            min="1"
                            class="form-control"
                            name="quantity"
-                           ng-model="item.quantity" ng-change="updateItemQuantity(item, $index)"
+                           ng-model="product.quantity" ng-change="updateItemQuantity(product, $index)"
                            ng-model-options="{debounce: 500}" />
                 </td>
                 <td class="col-md-2 col-sm-2 col-xs-2">
-                    {{item.quantity * item.price | currency}}
+                    {{product.quantity * product.price | currency}}
                     <i class="glyphicon glyphicon-trash" ng-click="removeCartItem($index)"></i>
                 </td>
             </tr>
         </table>
-        <p class="col-md-10">Total</p>
-        <p class="col-md-2 text-center">{{total | currency}}</p>
+        <p class="col-md-10 col-xs-10">Total</p>
+        <p class="col-md-2 col-xs-2 text-center">{{total | currency}}</p>
         <button class="btn btn-danger"
                 ng-click="removeCartItems()">
             <i class="glyphicon glyphicon-trash"></i> Remove Items

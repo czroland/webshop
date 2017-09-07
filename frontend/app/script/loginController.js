@@ -8,11 +8,17 @@
         $scope.login = function () {
             api.login($scope.user)
                 .then(function (response) {
-                    if ($scope.remember) {
-                        localStorage.setItem('loggedInUser', JSON.stringify(response.data));
-                    } else {
-                        sessionStorage.setItem('loggedInUser', JSON.stringify(response.data));
+                    var loggedInUser = response.data;
+                    if (!loggedInUser.customer.hasOwnProperty('cart')) {
+                        loggedInUser.customer.cart = {
+                            products: []
+                        };
                     }
+                    if ($scope.remember) {
+                        localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+                    } else {
+                        sessionStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+}
                     $rootScope.$broadcast('loginStateChange');
                     $location.path('/');
                 })

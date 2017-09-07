@@ -24,8 +24,8 @@
             cartService.removeItems();
         };
 
-        $scope.updateItemQuantity = function (item, index) {
-            cartService.updateItemQuantity(item, index);
+        $scope.updateItemQuantity = function (product, index) {
+            cartService.updateItemQuantity(product, index);
         };
 
         $scope.$on('cartChanged', function () {

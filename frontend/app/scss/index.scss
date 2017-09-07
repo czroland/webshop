@@ -686,6 +686,12 @@ footer {
             }
             td {
                 position: relative;
+                figure {
+                    width: 100%;
+                    img {
+                        width: 100%;
+                    }
+                }
                 input {
                     background-color: #fcfcfc;
                     box-shadow: none;
@@ -721,9 +727,9 @@ footer {
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 500px) {
     .cart-items table {
-        & th:nth-child(2), & td:nth-child(2) {
+        & th:nth-child(1), & td:nth-child(1) {
             display: none;
         }
     }

@@ -11,14 +11,14 @@
         this.removeItems = removeItems;
         this.updateItemQuantity = updateItemQuantity;
 
-        function addToCart(offer) {
+        function addToCart(product) {
             var loggedInUser = userService.getLoggedInUser();
-            var foundItem = loggedInUser.user.cart.items.find(function (o) {
-                return o.name === offer.name;
+            var foundItem = loggedInUser.customer.cart.products.find(function (o) {
+                return o.name === product.name;
             });
             if(!foundItem) {
-                offer.quantity = 1;
-                loggedInUser.user.cart.items.push(offer);
+                product.quantity = 1;
+                loggedInUser.customer.cart.products.push(product);
                 updateStorage(loggedInUser);
                 $rootScope.$broadcast('cartChanged');
             }
@@ -31,25 +31,25 @@
 
         function getItemList() {
             var loggedInUser = userService.getLoggedInUser();
-            this.cartItemList = loggedInUser.user.cart.items;
+            this.cartItemList = loggedInUser.customer.cart.products;
             return this.cartItemList;
         }
         
         function removeItem(index) {
             var loggedInUser = userService.getLoggedInUser();
-            loggedInUser.user.cart.items.splice(index, 1);
+            loggedInUser.customer.cart.products.splice(index, 1);
             cartChanged(loggedInUser);
         }
 
         function removeItems() {
             var loggedInUser = userService.getLoggedInUser();
-            loggedInUser.user.cart.items = [];
+            loggedInUser.customer.cart.products = [];
             cartChanged(loggedInUser);
         }
 
-        function updateItemQuantity(item ,index) {
+        function updateItemQuantity(product ,index) {
             var loggedInUser = userService.getLoggedInUser();
-            loggedInUser.user.cart.items[index].quantity = item.quantity;
+            loggedInUser.customer.cart.products[index].quantity = product.quantity;
             cartChanged(loggedInUser);
         }
         
